@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.serialization)
 }
 
 android {
@@ -45,4 +46,34 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    /**Third party stuff**/
+
+    // Retrofit
+    implementation(libs.retrofit)
+    //Gson Converter
+    implementation(libs.gson)
+    //Paging3
+    implementation(libs.androidx.paging.runtime.ktx)
+    //Coil for image loading
+    implementation(libs.coil)
+    //Coil network library
+    implementation(libs.coil.network.okhttp)
+    //Coroutines
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.coroutines.core)
+    //OkHttp3
+    implementation(libs.okhttp)
+    //ViewModel
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    // LiveData
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    // Lifecycles only (without ViewModel or LiveData)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+}
+
+buildscript {
+    dependencies {
+        classpath(libs.gradle)
+    }
 }
