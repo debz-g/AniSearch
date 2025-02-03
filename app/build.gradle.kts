@@ -82,6 +82,8 @@ dependencies {
     implementation(libs.androidx.navigation.dynamic.features.fragment)
     // JSON serialization library, works with the Kotlin serialization plugin
     implementation(libs.kotlinx.serialization.json)
+    //Shimmer
+    implementation(libs.shimmer)
 }
 
 buildscript {

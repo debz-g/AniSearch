@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -13,7 +14,6 @@ import dev.redfox.anisearch.network.RetrofitClient
 import dev.redfox.anisearch.network.TopAnimeRepository
 import dev.redfox.anisearch.ui.topAnime.adapter.TopAnimeAdapter
 import dev.redfox.anisearch.viewmodel.TopAnimeViewModel
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class TopAnimeFragment : Fragment() {
@@ -34,7 +34,7 @@ class TopAnimeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.shimmerEffect.isVisible = true
         val repository = TopAnimeRepository(RetrofitClient.apiService)
 
         viewModel = ViewModelProvider(
@@ -47,7 +47,8 @@ class TopAnimeFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        binding.recyclerView.apply {
+        binding.rvAnimeList.apply {
+            setHasFixedSize(true)
             layoutManager = GridLayoutManager(requireContext(), 2) // 2 columns
             adapter = animeAdapter
         }
@@ -57,6 +58,7 @@ class TopAnimeFragment : Fragment() {
         lifecycleScope.launch {
             viewModel.topAnime.observe(viewLifecycleOwner) { pagingData ->
                 animeAdapter.submitData(viewLifecycleOwner.lifecycle, pagingData)
+                binding.shimmerEffect.isVisible = false
             }
         }
     }

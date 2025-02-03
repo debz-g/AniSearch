@@ -25,17 +25,21 @@ class TopAnimeAdapter : PagingDataAdapter<AnimeData, TopAnimeAdapter.AnimeViewHo
         }
     }
 
-    class AnimeViewHolder(private val binding: ItemAnimeBinding) : RecyclerView.ViewHolder(binding.root) {
+    class AnimeViewHolder(private val binding: ItemAnimeBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(anime: AnimeData) {
-            binding.textViewTitle.text = anime.title
-            Glide.with(binding.imageView.context)
+            binding.animeName.text = anime.title
+            Glide.with(binding.animePic.context)
                 .load(anime.images.jpg.imageUrl)
-                .into(binding.imageView)
+                .into(binding.animePic)
         }
     }
 
     class AnimeDiffCallback : DiffUtil.ItemCallback<AnimeData>() {
-        override fun areItemsTheSame(oldItem: AnimeData, newItem: AnimeData): Boolean = oldItem.malId == newItem.malId
-        override fun areContentsTheSame(oldItem: AnimeData, newItem: AnimeData): Boolean = oldItem == newItem
+        override fun areItemsTheSame(oldItem: AnimeData, newItem: AnimeData): Boolean =
+            oldItem.malId == newItem.malId
+
+        override fun areContentsTheSame(oldItem: AnimeData, newItem: AnimeData): Boolean =
+            oldItem == newItem
     }
 }
