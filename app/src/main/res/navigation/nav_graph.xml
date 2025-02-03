@@ -8,4 +8,16 @@
         android:id="@+id/topAnimeFragment"
         android:name="dev.redfox.anisearch.ui.topAnime.fragment.TopAnimeFragment"
         android:label="TopAnimeFragment" />
+    <fragment
+        android:id="@+id/searchAnimeFragment"
+        android:name="dev.redfox.anisearch.ui.search.fragment.SearchAnimeFragment"
+        android:label="SearchAnimeFragment" />
+    <fragment
+        android:id="@+id/favouriteAnimeFragment"
+        android:name="dev.redfox.anisearch.ui.favourite.fragment.FavouriteAnimeFragment"
+        android:label="FavouriteAnimeFragment" />
+    <fragment
+        android:id="@+id/newsAnimeFragment"
+        android:name="dev.redfox.anisearch.ui.news.fragment.NewsAnimeFragment"
+        android:label="NewsAnimeFragment" />
 </navigation>

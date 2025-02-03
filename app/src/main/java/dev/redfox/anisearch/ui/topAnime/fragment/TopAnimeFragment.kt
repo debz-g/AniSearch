@@ -14,6 +14,8 @@ import dev.redfox.anisearch.network.RetrofitClient
 import dev.redfox.anisearch.network.TopAnimeRepository
 import dev.redfox.anisearch.paging.caching.AnimeDatabase
 import dev.redfox.anisearch.ui.topAnime.adapter.TopAnimeAdapter
+import dev.redfox.anisearch.utils.hide
+import dev.redfox.anisearch.utils.show
 import dev.redfox.anisearch.viewmodel.TopAnimeViewModel
 import kotlinx.coroutines.launch
 
@@ -35,8 +37,10 @@ class TopAnimeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.shimmerEffect.visibility = View.VISIBLE
-//        val database = AnimeDatabase.getDatabase(requireContext())
+        binding.apply {
+            progressBar.show()
+            rvAnimeList.hide()
+        }
         val repository = TopAnimeRepository(RetrofitClient.apiService)
 
         viewModel = ViewModelProvider(
@@ -59,8 +63,11 @@ class TopAnimeFragment : Fragment() {
     private fun observeAnimeData() {
         lifecycleScope.launch {
             viewModel.topAnime.observe(viewLifecycleOwner) { pagingData ->
+                binding.apply {
+                    progressBar.hide()
+                    rvAnimeList.show()
+                }
                 animeAdapter.submitData(viewLifecycleOwner.lifecycle, pagingData)
-                binding.shimmerEffect.visibility = View.GONE
             }
         }
     }
