@@ -18,3 +18,20 @@ class TopAnimeRepository(private val apiService: ServerInterface) {
         pagingSourceFactory = { TopAnimePagingSource(apiService) }
     ).liveData
 }
+
+/*@OptIn(ExperimentalPagingApi::class)
+class TopAnimeRepository(
+    private val apiService: ServerInterface,
+    private val database: AnimeDatabase
+) {
+    fun getTopAnimePaged(): LiveData<PagingData<AnimeEntity>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 10,
+                enablePlaceholders = false
+            ),
+            remoteMediator = AnimeRemoteMediator(apiService, database),
+            pagingSourceFactory = { database.animeDao().getPagedAnime() }
+        ).liveData
+    }
+}*/

@@ -6,12 +6,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import dev.redfox.anisearch.models.TopApiDataClass.AnimeData
+import dev.redfox.anisearch.models.TopApiDataClass
 import dev.redfox.anisearch.network.TopAnimeRepository
 
 class TopAnimeViewModel(private val repository: TopAnimeRepository) : ViewModel() {
 
-    val topAnime: LiveData<PagingData<AnimeData>> =
+    val topAnime: LiveData<PagingData<TopApiDataClass.AnimeData>> =
         repository.getTopAnimePaged().cachedIn(viewModelScope)
 
     class Factory(private val repository: TopAnimeRepository) : ViewModelProvider.Factory {

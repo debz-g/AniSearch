@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import dev.redfox.anisearch.databinding.FragmentTopAnimeBinding
 import dev.redfox.anisearch.network.RetrofitClient
 import dev.redfox.anisearch.network.TopAnimeRepository
+import dev.redfox.anisearch.paging.caching.AnimeDatabase
 import dev.redfox.anisearch.ui.topAnime.adapter.TopAnimeAdapter
 import dev.redfox.anisearch.viewmodel.TopAnimeViewModel
 import kotlinx.coroutines.launch
@@ -34,7 +35,8 @@ class TopAnimeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.shimmerEffect.isVisible = true
+        binding.shimmerEffect.visibility = View.VISIBLE
+//        val database = AnimeDatabase.getDatabase(requireContext())
         val repository = TopAnimeRepository(RetrofitClient.apiService)
 
         viewModel = ViewModelProvider(
@@ -58,7 +60,7 @@ class TopAnimeFragment : Fragment() {
         lifecycleScope.launch {
             viewModel.topAnime.observe(viewLifecycleOwner) { pagingData ->
                 animeAdapter.submitData(viewLifecycleOwner.lifecycle, pagingData)
-                binding.shimmerEffect.isVisible = false
+                binding.shimmerEffect.visibility = View.GONE
             }
         }
     }

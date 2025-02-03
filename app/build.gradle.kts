@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.serialization)
     alias(libs.plugins.androidx.navigation.safeargs)
+    alias(libs.plugins.devtools.ksp)
 }
 
 android {
@@ -84,6 +85,11 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     //Shimmer
     implementation(libs.shimmer)
+    //Room DB
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.room.paging)
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
 }
 
 buildscript {
