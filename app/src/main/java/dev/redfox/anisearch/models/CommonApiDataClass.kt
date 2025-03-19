@@ -2,8 +2,8 @@ package dev.redfox.anisearch.models
 
 import com.google.gson.annotations.SerializedName
 
-class TopApiDataClass {
-    data class TopAnimeResponse(
+class CommonApiDataClass {
+    data class CommonAnimeResponse(
         val pagination: Pagination,
         val data: List<AnimeData>
     )

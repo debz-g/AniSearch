@@ -1,38 +1,34 @@
-package dev.redfox.anisearch.ui.topAnime.adapter
+package dev.redfox.anisearch.ui.schedule.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import dev.redfox.anisearch.databinding.ItemAnimeBinding
 import dev.redfox.anisearch.models.CommonApiDataClass.AnimeData
+import dev.redfox.anisearch.ui.schedule.adapter.ScheduleAdapter.ScheduleViewHolder
 import dev.redfox.anisearch.utils.AnimeDiffCallback
 
-class TopAnimeAdapter : PagingDataAdapter<AnimeData, TopAnimeAdapter.AnimeViewHolder>(
+class ScheduleAdapter : PagingDataAdapter<AnimeData, ScheduleViewHolder>(
     AnimeDiffCallback()
 ) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimeViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScheduleViewHolder {
         val binding = ItemAnimeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return AnimeViewHolder(binding)
+        return ScheduleViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: AnimeViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ScheduleViewHolder, position: Int) {
         val anime = getItem(position)
         if (anime != null) {
             holder.bind(anime)
         }
     }
 
-    class AnimeViewHolder(private val binding: ItemAnimeBinding) :
+    class ScheduleViewHolder(private val binding: ItemAnimeBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(anime: AnimeData) {
-            binding.animeName.text = anime.title
-            Glide.with(binding.animePic.context)
-                .load(anime.images.jpg.imageUrl)
-                .into(binding.animePic)
+
         }
     }
 }

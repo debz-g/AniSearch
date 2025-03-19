@@ -9,9 +9,9 @@
         android:name="dev.redfox.anisearch.ui.topAnime.fragment.TopAnimeFragment"
         android:label="TopAnimeFragment" />
     <fragment
-        android:id="@+id/searchAnimeFragment"
-        android:name="dev.redfox.anisearch.ui.search.fragment.SearchAnimeFragment"
-        android:label="SearchAnimeFragment" />
+        android:id="@+id/scheduleAnimeFragment"
+        android:name="dev.redfox.anisearch.ui.schedule.fragment.ScheduleAnimeFragment"
+        android:label="ScheduleAnimeFragment" />
     <fragment
         android:id="@+id/favouriteAnimeFragment"
         android:name="dev.redfox.anisearch.ui.favourite.fragment.FavouriteAnimeFragment"

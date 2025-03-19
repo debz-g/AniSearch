@@ -6,9 +6,9 @@
         android:title="@string/explore" />
 
     <item
-        android:id="@id/searchAnimeFragment"
-        android:icon="@drawable/ic_search"
-        android:title="@string/search" />
+        android:id="@id/scheduleAnimeFragment"
+        android:icon="@drawable/ic_schedule"
+        android:title="@string/schedule" />
 
     <item
         android:id="@id/newsAnimeFragment"
