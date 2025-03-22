@@ -4,8 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import dev.redfox.anisearch.databinding.ItemAnimeBinding
-import dev.redfox.anisearch.models.CommonApiDataClass.AnimeData
+import dev.redfox.anisearch.models.AnimeData
 import dev.redfox.anisearch.ui.schedule.adapter.ScheduleAdapter.ScheduleViewHolder
 import dev.redfox.anisearch.utils.AnimeDiffCallback
 
@@ -28,7 +29,10 @@ class ScheduleAdapter : PagingDataAdapter<AnimeData, ScheduleViewHolder>(
     class ScheduleViewHolder(private val binding: ItemAnimeBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(anime: AnimeData) {
-
+            binding.animeName.text = anime.title
+            Glide.with(binding.animePic.context)
+                .load(anime.images.webp.largeImageUrl)
+                .into(binding.animePic)
         }
     }
 }

@@ -1,5 +1,6 @@
 package dev.redfox.anisearch.ui.topAnime.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import dev.redfox.anisearch.databinding.FragmentTopAnimeBinding
 import dev.redfox.anisearch.network.RetrofitClient
 import dev.redfox.anisearch.network.AnimeRepository
 import dev.redfox.anisearch.ui.topAnime.adapter.TopAnimeAdapter
+import dev.redfox.anisearch.utils.getModelView
 import dev.redfox.anisearch.utils.hide
 import dev.redfox.anisearch.utils.show
 import dev.redfox.anisearch.viewmodel.TopAnimeViewModel
@@ -24,6 +26,11 @@ class TopAnimeFragment : Fragment() {
     }
     private lateinit var viewModel: TopAnimeViewModel
     private val animeAdapter = TopAnimeAdapter()
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        viewModel = getModelView(TopAnimeViewModel()) as TopAnimeViewModel
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,12 +46,6 @@ class TopAnimeFragment : Fragment() {
             progressBar.show()
             rvAnimeList.hide()
         }
-        val repository = AnimeRepository(RetrofitClient.apiService)
-
-        viewModel = ViewModelProvider(
-            this,
-            TopAnimeViewModel.Factory(repository)
-        )[TopAnimeViewModel::class.java]
 
         setupRecyclerView()
         observeAnimeData()

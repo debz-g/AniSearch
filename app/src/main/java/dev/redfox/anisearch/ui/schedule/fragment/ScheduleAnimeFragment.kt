@@ -5,20 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dev.redfox.anisearch.databinding.FragmentScheduleAnimeBinding
-import dev.redfox.anisearch.network.AnimeRepository
-import dev.redfox.anisearch.network.RetrofitClient
-import dev.redfox.anisearch.ui.schedule.adapter.ScheduleAdapter
 import dev.redfox.anisearch.ui.schedule.adapter.ScheduleTabAdapter
-import dev.redfox.anisearch.ui.topAnime.adapter.TopAnimeAdapter
 import dev.redfox.anisearch.utils.getModelView
 import dev.redfox.anisearch.viewmodel.ScheduleViewModel
-import dev.redfox.anisearch.viewmodel.TopAnimeViewModel
 
 class ScheduleAnimeFragment : Fragment() {
     private val binding: FragmentScheduleAnimeBinding by lazy {
@@ -27,9 +21,10 @@ class ScheduleAnimeFragment : Fragment() {
 
     private lateinit var mContext: Context
     private lateinit var viewModel: ScheduleViewModel
-    private val scheduleTabAdapter = ScheduleTabAdapter(this)
+    private lateinit var scheduleTabAdapter: ScheduleTabAdapter
 
-    private val daysOfWeek = listOf("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+    private val daysOfWeek =
+        listOf("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -47,11 +42,25 @@ class ScheduleAnimeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        setStatusBarInsets()
+        scheduleTabAdapter = ScheduleTabAdapter(this)
         binding.viewPager.adapter = scheduleTabAdapter
 
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = daysOfWeek[position]
         }.attach()
+    }
+
+    private fun setStatusBarInsets() {
+        binding.root.apply {
+            ViewCompat.setOnApplyWindowInsetsListener(this) { v, windowInsets ->
+                val statusBarHeight =
+                    windowInsets.getInsets(WindowInsetsCompat.Type.statusBars()).top
+                binding.scheduleStatusBarPlaceholder.apply {
+                    layoutParams = layoutParams.apply { height = statusBarHeight }
+                }
+                windowInsets
+            }
+        }
     }
 }

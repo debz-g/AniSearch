@@ -6,17 +6,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import dev.redfox.anisearch.databinding.FragmentScheduleAnimeBinding
+import dev.redfox.anisearch.databinding.FragmentScheduleDayBinding
+import dev.redfox.anisearch.ui.schedule.adapter.ScheduleAdapter
 import dev.redfox.anisearch.utils.Constants
 import dev.redfox.anisearch.utils.getModelView
 import dev.redfox.anisearch.viewmodel.ScheduleViewModel
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class ScheduleDayFragment: Fragment() {
-    private val binding: FragmentScheduleAnimeBinding by lazy {
-        FragmentScheduleAnimeBinding.inflate(layoutInflater)
+    private val binding: FragmentScheduleDayBinding by lazy {
+        FragmentScheduleDayBinding.inflate(layoutInflater)
     }
     private lateinit var viewModel: ScheduleViewModel
     private lateinit var mContext: Context
+    private val scheduleAdapter = ScheduleAdapter()
 
     companion object {
         fun newInstance(day: String): ScheduleDayFragment {
@@ -46,6 +52,17 @@ class ScheduleDayFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.handleExtras(arguments)
 
+        binding.rvSchedule.adapter = scheduleAdapter
+        initObservers()
+    }
 
+    private fun initObservers() {
+        lifecycleScope.launch {
+            viewModel.apply {
+                getSchedule(getDay()).collectLatest { pagingData ->
+                    scheduleAdapter.submitData(pagingData)
+                }
+            }
+        }
     }
 }

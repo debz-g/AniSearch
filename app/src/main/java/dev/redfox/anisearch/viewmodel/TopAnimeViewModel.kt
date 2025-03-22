@@ -6,21 +6,17 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import dev.redfox.anisearch.models.CommonApiDataClass
+import dev.redfox.anisearch.models.AnimeData
 import dev.redfox.anisearch.network.AnimeRepository
+import dev.redfox.anisearch.network.RetrofitClient
 
-class TopAnimeViewModel(private val repository: AnimeRepository) : ViewModel() {
+class TopAnimeViewModel() : ViewModel() {
 
-    val topAnime: LiveData<PagingData<CommonApiDataClass.AnimeData>> =
-        repository.getTopAnimePaged().cachedIn(viewModelScope)
-
-    class Factory(private val repository: AnimeRepository) : ViewModelProvider.Factory {
-        override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(TopAnimeViewModel::class.java)) {
-                @Suppress("UNCHECKED_CAST")
-                return TopAnimeViewModel(repository) as T
-            }
-            throw IllegalArgumentException("Unknown ViewModel class")
-        }
+    private val animeRepository: AnimeRepository by lazy {
+        AnimeRepository(RetrofitClient.apiService)
     }
+
+    val topAnime: LiveData<PagingData<AnimeData>> =
+        animeRepository.getTopAnimePaged().cachedIn(viewModelScope)
+
 }

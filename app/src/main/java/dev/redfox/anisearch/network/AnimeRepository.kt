@@ -5,8 +5,10 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.liveData
-import dev.redfox.anisearch.models.CommonApiDataClass.AnimeData
+import dev.redfox.anisearch.models.AnimeData
+import dev.redfox.anisearch.paging.SchedulePagingSource
 import dev.redfox.anisearch.paging.TopAnimePagingSource
+import kotlinx.coroutines.flow.Flow
 
 class AnimeRepository(private val apiService: ServerInterface) {
 
@@ -17,6 +19,15 @@ class AnimeRepository(private val apiService: ServerInterface) {
         ),
         pagingSourceFactory = { TopAnimePagingSource(apiService) }
     ).liveData
+
+    fun getSchedule(day: String): Flow<PagingData<AnimeData>> = Pager(
+        config = PagingConfig(
+            pageSize = 25,
+            enablePlaceholders = false
+        ),
+        pagingSourceFactory = { SchedulePagingSource(day, apiService) }
+    ).flow
+
 }
 
 /*@OptIn(ExperimentalPagingApi::class)

@@ -5,11 +5,12 @@
     android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewSchedule"
+        android:id="@+id/rv_schedule"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:clipToPadding="false"
+        android:layout_marginBottom="@dimen/dimen96"
         android:padding="8dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

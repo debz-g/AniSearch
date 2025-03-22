@@ -35,7 +35,7 @@
                 android:fontFamily="@font/sofiaprosoftmedium"
                 android:maxLines="3"
                 android:padding="8dp"
-                android:textColor="@color/white"
+                android:textColor="@color/colorWhite"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

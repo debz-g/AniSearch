@@ -2,14 +2,14 @@ package dev.redfox.anisearch.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import dev.redfox.anisearch.models.CommonApiDataClass
+import dev.redfox.anisearch.models.AnimeData
 import dev.redfox.anisearch.network.ServerInterface
 
 class TopAnimePagingSource(
     private val apiService: ServerInterface
-) : PagingSource<Int, CommonApiDataClass.AnimeData>() {
+) : PagingSource<Int, AnimeData>() {
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, CommonApiDataClass.AnimeData> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, AnimeData> {
         val page = params.key ?: 1
         return try {
             // Directly fetch data without Response<T> wrapping
@@ -26,7 +26,7 @@ class TopAnimePagingSource(
         }
     }
 
-    override fun getRefreshKey(state: PagingState<Int, CommonApiDataClass.AnimeData>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, AnimeData>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
             val anchorPage = state.closestPageToPosition(anchorPosition)
             anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
