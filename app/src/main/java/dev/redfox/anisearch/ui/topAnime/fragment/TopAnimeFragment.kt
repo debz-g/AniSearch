@@ -20,7 +20,6 @@ import dev.redfox.anisearch.utils.getModelView
 import dev.redfox.anisearch.utils.hide
 import dev.redfox.anisearch.utils.show
 import dev.redfox.anisearch.utils.showLog
-import dev.redfox.anisearch.utils.updateSystemBarIconsColor
 import dev.redfox.anisearch.viewmodel.TopAnimeViewModel
 import kotlinx.coroutines.launch
 
@@ -62,8 +61,8 @@ class TopAnimeFragment : Fragment() {
             rvAnimeList.hide()
             ablExplore.bringToFront()
             exploreStatusBarPlaceholder.bringToFront()
+            exploreStatusBarPlaceholder.changeBackgroundDrawableColor(getColorCompat(R.color.colorBlack100))
         }
-        parentActivity.updateSystemBarIconsColor(getColorCompat(R.color.colorBlack))
         setupRecyclerView()
         observeAnimeData()
     }
@@ -84,7 +83,7 @@ class TopAnimeFragment : Fragment() {
     private fun setupRecyclerView() {
         binding.rvAnimeList.apply {
             setHasFixedSize(true)
-            layoutManager = GridLayoutManager(requireContext(), 2) // 2 columns
+            layoutManager = GridLayoutManager(mContext, 2) // 2 columns
             adapter = animeAdapter
         }
     }

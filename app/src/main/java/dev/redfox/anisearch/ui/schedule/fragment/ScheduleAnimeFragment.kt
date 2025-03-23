@@ -55,7 +55,7 @@ class ScheduleAnimeFragment : Fragment() {
         setStatusBarInsets()
         scheduleTabAdapter = ScheduleTabAdapter(this)
         binding.viewPager.adapter = scheduleTabAdapter
-        binding.scheduleStatusBarPlaceholder.changeBackgroundDrawableColor(getColorCompat(R.color.colorBlack))
+        binding.scheduleStatusBarPlaceholder.changeBackgroundDrawableColor(getColorCompat(R.color.colorBlack100))
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = daysOfWeek[position]
         }.attach()

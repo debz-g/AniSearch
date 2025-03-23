@@ -4,13 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
+    <dev.redfox.anisearch.ui.customViews.MySmoothScrollRecyclerView
         android:id="@+id/rv_schedule"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_marginBottom="@dimen/dimen70"
+        android:paddingHorizontal="8dp"
         android:clipToPadding="false"
-        android:layout_marginBottom="@dimen/dimen96"
-        android:padding="8dp" />
+        android:paddingBottom="@dimen/dimen30"
+        android:stateListAnimator="@null"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

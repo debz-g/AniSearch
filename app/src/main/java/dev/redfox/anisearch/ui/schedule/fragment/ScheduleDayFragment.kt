@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import dev.redfox.anisearch.databinding.FragmentScheduleAnimeBinding
 import dev.redfox.anisearch.databinding.FragmentScheduleDayBinding
 import dev.redfox.anisearch.ui.schedule.adapter.ScheduleAdapter
@@ -52,7 +53,11 @@ class ScheduleDayFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.handleExtras(arguments)
 
-        binding.rvSchedule.adapter = scheduleAdapter
+        binding.rvSchedule.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(mContext)
+            adapter = scheduleAdapter
+        }
         initObservers()
     }
 
