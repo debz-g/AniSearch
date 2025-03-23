@@ -92,6 +92,10 @@ dependencies {
     implementation(libs.androidx.room.paging)
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
+    //Custom Nav
+    implementation(libs.chip.navigation.bar)
+    //lottie
+    implementation(libs.lottie)
 }
 
 buildscript {

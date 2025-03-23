@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -42,13 +44,28 @@ class TopAnimeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setStatusBarInsets()
         binding.apply {
             progressBar.show()
             rvAnimeList.hide()
+
         }
 
         setupRecyclerView()
         observeAnimeData()
+    }
+
+    private fun setStatusBarInsets() {
+        binding.root.apply {
+            ViewCompat.setOnApplyWindowInsetsListener(this) { v, windowInsets ->
+                val statusBarHeight =
+                    windowInsets.getInsets(WindowInsetsCompat.Type.statusBars()).top
+                binding.exploreStatusBarPlaceholder.apply {
+                    layoutParams = layoutParams.apply { height = statusBarHeight }
+                }
+                windowInsets
+            }
+        }
     }
 
     private fun setupRecyclerView() {

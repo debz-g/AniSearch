@@ -8,6 +8,238 @@
     <style name="Theme.AniSearch" parent="Base.Theme.AniSearch" />
 
     <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
-        <item name="android:color">@color/colorRedPink69</item>
+        <item name="android:color">@color/colorDarkRedPink</item>
     </style>
+
+
+
+
+
+
+    <!--Font Styles-->
+    <style name="RobotoSemiBold">
+        <item name="android:includeFontPadding">false</item>
+        <item name="fontFamily">@font/semibold</item>
+    </style>
+
+    <style name="RobotoSemiBoldWhite" parent="RobotoSemiBold">
+        <item name="android:textColor">@color/colorGray50</item>
+    </style>
+
+    <style name="RobotoSemiBold16" parent="RobotoSemiBoldWhite">
+        <item name="android:textSize">@dimen/text16</item>
+    </style>
+
+    <style name="RobotoLabel14" parent="RobotoSemiBold">
+        <item name="android:textColor">@color/colorGray300</item>
+        <item name="android:textSize">@dimen/text14</item>
+    </style>
+
+    <style name="RobotoBold">
+        <item name="android:includeFontPadding">false</item>
+        <item name="fontFamily">@font/bold</item>
+    </style>
+
+    <style name="RobotoBoldWhite" parent="RobotoBold">
+        <item name="android:textColor">@color/colorGray50</item>
+    </style>
+
+    <style name="RobotoBoldWhite16" parent="RobotoBoldWhite">
+        <item name="android:textSize">@dimen/text16</item>
+    </style>
+
+    <style name="RobotoBoldWhite18" parent="RobotoBoldWhite">
+        <item name="android:textSize">@dimen/text18</item>
+    </style>
+
+    <style name="RobotoBoldWhite20" parent="RobotoBoldWhite">
+        <item name="android:textSize">@dimen/text20</item>
+    </style>
+
+    <style name="RobotoBoldWhite22" parent="RobotoBoldWhite">
+        <item name="android:textSize">@dimen/text22</item>
+    </style>
+
+    <style name="RobotoBoldWhite122" parent="RobotoBoldWhite">
+        <item name="android:textSize">@dimen/text122</item>
+    </style>
+
+    <style name="RobotoBoldWhite24" parent="RobotoBoldWhite">
+        <item name="android:textSize">@dimen/text24</item>
+    </style>
+
+    <style name="ItalicParent">
+        <item name="fontFamily">@font/gentium_basic_italic</item>
+    </style>
+
+    <style name="ItalicGrey16" parent="ItalicParent">
+        <item name="android:textColor">@color/colorGray600</item>
+        <item name="android:textSize">@dimen/text16</item>
+    </style>
+
+    <style name="PoppinsLight">
+        <item name="android:includeFontPadding">false</item>
+        <item name="fontFamily">@font/poppins_light</item>
+    </style>
+
+    <style name="PoppinsLightWhite" parent="PoppinsLight">
+        <item name="android:textColor">@color/colorGray50</item>
+    </style>
+
+    <style name="PoppinsLightWhite10" parent="PoppinsLightWhite">
+        <item name="android:textSize">@dimen/text10</item>
+    </style>
+
+    <style name="PoppinsLightWhite12" parent="PoppinsLightWhite">
+        <item name="android:textSize">@dimen/text12</item>
+    </style>
+
+    <style name="PoppinsLightWhite14" parent="PoppinsLightWhite">
+        <item name="android:textSize">@dimen/text14</item>
+    </style>
+
+    <style name="PoppinsLightWhite16" parent="PoppinsLightWhite">
+        <item name="android:textSize">@dimen/text16</item>
+    </style>
+
+    <style name="PoppinsLightWhite18" parent="PoppinsLightWhite">
+        <item name="android:textSize">@dimen/text18</item>
+    </style>
+
+    <style name="PoppinsLightGrey" parent="PoppinsLight">
+        <item name="android:textColor">@color/colorGray400</item>
+    </style>
+
+    <style name="PoppinsLightGrey8" parent="PoppinsLightGrey">
+        <item name="android:textSize">@dimen/text8</item>
+    </style>
+
+    <style name="PoppinsLightGrey10" parent="PoppinsLightGrey">
+        <item name="android:textSize">@dimen/text10</item>
+    </style>
+
+    <style name="PoppinsLightGrey12" parent="PoppinsLightGrey">
+        <item name="android:textSize">@dimen/text12</item>
+    </style>
+
+    <style name="PoppinsLightGrey14" parent="PoppinsLightGrey">
+        <item name="android:textSize">@dimen/text14</item>
+    </style>
+
+    <style name="PoppinsInput">
+        <item name="android:includeFontPadding">false</item>
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">@dimen/text16</item>
+        <item name="android:textColor">@color/colorGray50</item>
+    </style>
+
+    <style name="PoppinsRegular">
+        <item name="android:includeFontPadding">false</item>
+        <item name="fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="TextRegularParent">
+        <item name="android:fontFamily">@font/regular</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <style name="TextRegular16" parent="TextRegularParent">
+        <item name="android:textSize">@dimen/text16</item>
+    </style>
+
+    <style name="PoppinsRegularWhite" parent="PoppinsRegular">
+        <item name="android:textColor">@color/colorGray50</item>
+    </style>
+
+    <style name="PoppinsRegularWhite10" parent="PoppinsRegularWhite">
+        <item name="android:textSize">@dimen/text10</item>
+    </style>
+
+    <style name="PoppinsRegularWhite12" parent="PoppinsRegularWhite">
+        <item name="android:textSize">@dimen/text12</item>
+    </style>
+
+    <style name="PoppinsRegularWhite14" parent="PoppinsRegularWhite">
+        <item name="android:textSize">@dimen/text14</item>
+    </style>
+
+    <style name="PoppinsRegularWhite16" parent="PoppinsRegularWhite">
+        <item name="android:textSize">@dimen/text16</item>
+    </style>
+
+    <style name="PoppinsRegularWhite22" parent="PoppinsRegularWhite">
+        <item name="android:textSize">@dimen/text22</item>
+    </style>
+
+    <style name="PoppinsRegularLightGray" parent="PoppinsRegular">
+        <item name="android:textColor">@color/colorGray50_60</item>
+    </style>
+
+    <style name="PoppinsRegularGrey" parent="PoppinsRegular">
+        <item name="android:textColor">@color/colorGray600</item>
+    </style>
+
+    <style name="PoppinsRegularLightGray12" parent="PoppinsRegularLightGray">
+        <item name="android:textSize">@dimen/text12</item>
+    </style>
+
+    <style name="PoppinsSemiBold">
+        <item name="fontFamily">@font/poppins_semibold</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="PoppinsSemiBoldWhite" parent="PoppinsSemiBold">
+        <item name="android:textColor">@color/colorGray50</item>
+    </style>
+
+    <style name="PoppinsSemiBoldWhite12" parent="PoppinsSemiBoldWhite">
+        <item name="android:textSize">@dimen/text12</item>
+    </style>
+
+    <style name="PoppinsSemiBoldWhite22" parent="PoppinsSemiBoldWhite">
+        <item name="android:textSize">@dimen/text22</item>
+    </style>
+
+    <style name="PoppinsBold">
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="PoppinsBold18" parent="PoppinsBold">
+        <item name="android:textSize">@dimen/text18</item>
+    </style>
+
+    <style name="PoppinsBold20" parent="PoppinsBold">
+        <item name="android:textSize">@dimen/text20</item>
+    </style>
+
+    <style name="RobotoRegular">
+        <item name="android:includeFontPadding">false</item>
+        <item name="fontFamily">@font/regular</item>
+    </style>
+
+    <style name="RobotoRegularGrey" parent="RobotoRegular">
+        <item name="android:textColor">@color/colorGray600</item>
+    </style>
+
+    <style name="RobotoRegularGrey14" parent="RobotoRegularGrey">
+        <item name="android:textSize">@dimen/text14</item>
+    </style>
+
+    <style name="RobotoRegularWhite" parent="RobotoRegular">
+        <item name="android:textColor">@color/colorGray50</item>
+    </style>
+
+    <style name="RobotoRegularWhite14" parent="RobotoRegularWhite">
+        <item name="android:textSize">@dimen/text14</item>
+    </style>
+
+    <style name="RobotoRegularOrange" parent="RobotoRegular">
+        <item name="android:textColor">@color/colorOrange</item>
+    </style>
+
+    <style name="RobotoRegularOrange12" parent="RobotoRegularOrange">
+        <item name="android:textSize">@dimen/text12</item>
+    </style>
+
 </resources>

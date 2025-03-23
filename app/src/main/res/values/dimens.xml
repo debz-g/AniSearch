@@ -17,6 +17,7 @@
     <dimen name="dimen_tab_height">48dp</dimen>
 
     <dimen name="dimen0">0dp</dimen>
+    <dimen name="dimen1">1dp</dimen>
     <dimen name="dimen2">2dp</dimen>
     <dimen name="dimen4">4dp</dimen>
     <dimen name="dimen5">5dp</dimen>

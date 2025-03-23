@@ -1,5 +1,6 @@
 [versions]
-agp = "8.8.0"
+agp = "8.8.2"
+chipNavigationBar = "1.4.0"
 glide = "4.16.0"
 kotlin = "2.0.0"
 coreKtx = "1.15.0"
@@ -11,11 +12,12 @@ kotlinxCoroutines = "1.10.1"
 kotlinxSerializationJson = "1.7.3"
 lifecycleRuntimeKtx = "2.8.7"
 material = "1.12.0"
-activity = "1.10.0"
-constraintlayout = "2.2.0"
-navigationComponent = "2.8.6"
+activity = "1.10.1"
+constraintlayout = "2.2.1"
+navigationComponent = "2.8.9"
 okhttp = "4.12.0"
-pagingRuntimeKtx = "3.3.5"
+lottie = "6.3.0"
+pagingRuntimeKtx = "3.3.6"
 retrofit = "2.11.0"
 shimmer = "0.5.0"
 roomKtx = "2.6.1"
@@ -36,6 +38,8 @@ androidx-paging-runtime-ktx = { module = "androidx.paging:paging-runtime-ktx", v
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomKtx" }
 androidx-room-paging = { module = "androidx.room:room-paging", version.ref = "roomKtx" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomKtx" }
+chip-navigation-bar = { module = "com.github.ismaeldivita:chip-navigation-bar", version.ref = "chipNavigationBar" }
+lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 gson = { module = "com.google.code.gson:gson", version.ref = "retrofit" }
 gson-convertor = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
