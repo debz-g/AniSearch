@@ -9,8 +9,12 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
+import dev.redfox.anisearch.MainActivity
+import dev.redfox.anisearch.R
 import dev.redfox.anisearch.databinding.FragmentScheduleAnimeBinding
 import dev.redfox.anisearch.ui.schedule.adapter.ScheduleTabAdapter
+import dev.redfox.anisearch.utils.changeBackgroundDrawableColor
+import dev.redfox.anisearch.utils.getColorCompat
 import dev.redfox.anisearch.utils.getModelView
 import dev.redfox.anisearch.viewmodel.ScheduleViewModel
 
@@ -20,15 +24,21 @@ class ScheduleAnimeFragment : Fragment() {
     }
 
     private lateinit var mContext: Context
+    private lateinit var parentActivity: MainActivity
     private lateinit var viewModel: ScheduleViewModel
     private lateinit var scheduleTabAdapter: ScheduleTabAdapter
 
     private val daysOfWeek =
         listOf("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
 
+    companion object {
+        fun getInstance() = ScheduleAnimeFragment()
+    }
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mContext = context
+        parentActivity = mContext as MainActivity
         viewModel = getModelView(ScheduleViewModel()) as ScheduleViewModel
     }
 
@@ -45,7 +55,7 @@ class ScheduleAnimeFragment : Fragment() {
         setStatusBarInsets()
         scheduleTabAdapter = ScheduleTabAdapter(this)
         binding.viewPager.adapter = scheduleTabAdapter
-
+        binding.scheduleStatusBarPlaceholder.changeBackgroundDrawableColor(getColorCompat(R.color.colorBlack))
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = daysOfWeek[position]
         }.attach()

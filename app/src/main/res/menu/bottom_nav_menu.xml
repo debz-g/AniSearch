@@ -2,21 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@id/topAnimeFragment"
-        android:icon="@drawable/ic_explore"
+        android:icon="@drawable/selector_explore_menu"
         android:title="@string/explore" />
 
     <item
         android:id="@id/scheduleAnimeFragment"
-        android:icon="@drawable/ic_schedule"
+        android:icon="@drawable/selector_schedule_menu"
         android:title="@string/schedule" />
 
     <item
         android:id="@id/newsAnimeFragment"
-        android:icon="@drawable/ic_news"
+        android:icon="@drawable/selector_news_menu"
         android:title="@string/news" />
 
     <item
         android:id="@id/favouriteAnimeFragment"
-        android:icon="@drawable/ic_favourite"
+        android:icon="@drawable/selector_favourite_menu"
         android:title="@string/favourites" />
 </menu>

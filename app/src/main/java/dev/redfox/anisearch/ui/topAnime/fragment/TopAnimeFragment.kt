@@ -8,16 +8,19 @@ import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
+import dev.redfox.anisearch.MainActivity
+import dev.redfox.anisearch.R
 import dev.redfox.anisearch.databinding.FragmentTopAnimeBinding
-import dev.redfox.anisearch.network.RetrofitClient
-import dev.redfox.anisearch.network.AnimeRepository
 import dev.redfox.anisearch.ui.topAnime.adapter.TopAnimeAdapter
+import dev.redfox.anisearch.utils.changeBackgroundDrawableColor
+import dev.redfox.anisearch.utils.getColorCompat
 import dev.redfox.anisearch.utils.getModelView
 import dev.redfox.anisearch.utils.hide
 import dev.redfox.anisearch.utils.show
+import dev.redfox.anisearch.utils.showLog
+import dev.redfox.anisearch.utils.updateSystemBarIconsColor
 import dev.redfox.anisearch.viewmodel.TopAnimeViewModel
 import kotlinx.coroutines.launch
 
@@ -26,11 +29,20 @@ class TopAnimeFragment : Fragment() {
     private val binding: FragmentTopAnimeBinding by lazy {
         FragmentTopAnimeBinding.inflate(layoutInflater)
     }
+
+    private lateinit var mContext: Context
+    private lateinit var parentActivity: MainActivity
     private lateinit var viewModel: TopAnimeViewModel
     private val animeAdapter = TopAnimeAdapter()
 
+    companion object {
+        fun getInstance() = TopAnimeFragment()
+    }
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
+        mContext = context
+        parentActivity = mContext as MainActivity
         viewModel = getModelView(TopAnimeViewModel()) as TopAnimeViewModel
     }
 
@@ -48,9 +60,10 @@ class TopAnimeFragment : Fragment() {
         binding.apply {
             progressBar.show()
             rvAnimeList.hide()
-
+            ablExplore.bringToFront()
+            exploreStatusBarPlaceholder.bringToFront()
         }
-
+        parentActivity.updateSystemBarIconsColor(getColorCompat(R.color.colorBlack))
         setupRecyclerView()
         observeAnimeData()
     }
@@ -85,6 +98,14 @@ class TopAnimeFragment : Fragment() {
                 }
                 animeAdapter.submitData(viewLifecycleOwner.lifecycle, pagingData)
             }
+        }
+    }
+
+    fun scrollToTop() {
+        try {
+            binding.rvAnimeList.smoothScrollToPosition(0)
+        } catch (ex: Exception) {
+            ex.showLog()
         }
     }
 }

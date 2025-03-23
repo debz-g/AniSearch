@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBlack90"
+    android:background="@color/colorBlack"
+    android:clipToPadding="false"
+    android:clipChildren="false"
     tools:context=".ui.schedule.fragment.ScheduleAnimeFragment">
 
     <View
@@ -35,7 +37,7 @@
             android:layout_margin="@dimen/dimen8"
             app:tabBackground="@drawable/tabs_selector"
             app:tabIndicator="@null"
-            android:background="@drawable/tabs_background"
+            android:background="@drawable/gradient_black_reverse"
             app:tabSelectedTextColor="@color/colorWhite"
             app:tabTextColor="@color/colorBlack"
             />

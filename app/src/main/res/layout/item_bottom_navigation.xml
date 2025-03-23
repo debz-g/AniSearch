@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/tab_icon"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        tools:src="@drawable/ic_explore_active" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tab_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen6"
+        android:textColor="@color/colorGray400"
+        style="@style/PoppinsRegularWhite10"
+        tools:text="Home" />
+
+</LinearLayout>

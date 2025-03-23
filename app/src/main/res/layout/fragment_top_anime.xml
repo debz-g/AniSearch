@@ -2,10 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/colorBlack90"
-    android:orientation="vertical">
+    android:background="@color/colorBlack"
+    android:clipToPadding="false"
+    android:clipChildren="false">
 
     <View
         android:id="@+id/explore_status_bar_placeholder"
@@ -44,17 +44,18 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
+
+    <dev.redfox.anisearch.ui.customViews.MySmoothScrollRecyclerView
         android:id="@+id/rv_anime_list"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen0"
-        android:visibility="gone"
-        android:layout_marginHorizontal="6dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dimen6"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/banner220"
+        android:stateListAnimator="@null"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/abl_explore"
-        tools:itemCount="15"
-        android:layout_marginBottom="@dimen/dimen96"
-        tools:listitem="@layout/item_anime" />
+        app:layout_constraintTop_toBottomOf="@id/abl_explore"/>
 
     <ProgressBar
         android:id="@+id/progress_bar"

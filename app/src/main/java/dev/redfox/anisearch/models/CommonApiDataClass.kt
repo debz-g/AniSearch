@@ -176,3 +176,5 @@ data class GenericMalItem(
     val name: String?,
     val url: String?
 )
+
+data class TabIconPair(val inactiveIcon: Int, val activeIcon: Int)
