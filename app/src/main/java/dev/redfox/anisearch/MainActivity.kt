@@ -32,9 +32,9 @@ class MainActivity : AppCompatActivity() {
     private var currentFragment: Fragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setNavigationBarInsets()
-        super.onCreate(savedInstanceState)
         setContentView(binding.root)
         setupTabLayout()
         if (savedInstanceState == null) {
@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
             if (navHeight != 0) {
                 binding.mainNavigationPlaceholder.apply {
                     layoutParams = layoutParams.apply { height = navHeight }
-                    changeBackgroundDrawableColor(getColorCompat(R.color.colorBlack))
+                    changeBackgroundDrawableColor(getColorCompat(R.color.colorBlack100))
                 }
             } else
                 binding.mainNavigationPlaceholder.hide()

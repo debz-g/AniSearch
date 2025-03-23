@@ -3,6 +3,5 @@
     <style name="Theme.AniSearch" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:colorPrimary">@color/colorGray800</item>
         <item name="android:windowBackground">@color/colorBlack</item>
-        <item name="android:navigationBarColor">@color/colorBlack</item>
     </style>
 </resources>
