@@ -29,16 +29,36 @@
 
             <TextView
                 android:id="@+id/animeName"
+                style="@style/PoppinsSemiBoldWhite12"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_bg"
-                style="@style/PoppinsSemiBoldWhite12"
                 android:maxLines="3"
-                android:padding="8dp"
+                android:paddingStart="@dimen/dimen8"
+                android:paddingEnd="@dimen/dimen8"
+                android:paddingBottom="@dimen/dimen8"
+                android:paddingTop="@dimen/dimen12"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:text="One Piece" />
+
+            <TextView
+                android:id="@+id/animeRating"
+                style="@style/PoppinsRegularWhite12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen10"
+                android:layout_marginEnd="@dimen/dimen16"
+                android:background="@drawable/background_round_6dp_black"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/dimen5"
+                android:paddingVertical="@dimen/dimen3"
+                tools:text="9.0"
+                app:drawableStartCompat="@drawable/ic_star_16"
+                android:drawablePadding="@dimen/dimen2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

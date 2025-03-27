@@ -5,7 +5,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ServerInterface {
-	@GET("top/anime")
+	@GET("seasons/now")
 	suspend fun getTopAnime(@Query("page") page: Int) : CommonAnimeResponse
 
 	@GET("schedules")

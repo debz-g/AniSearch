@@ -52,6 +52,7 @@
         android:layout_marginTop="@dimen/dimen6"
         android:clipToPadding="false"
         android:paddingBottom="@dimen/banner220"
+        android:paddingHorizontal="@dimen/dimen8"
         android:stateListAnimator="@null"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constraintBottom_toBottomOf="parent"

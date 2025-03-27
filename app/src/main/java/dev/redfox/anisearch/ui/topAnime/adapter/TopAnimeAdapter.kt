@@ -28,10 +28,13 @@ class TopAnimeAdapter : PagingDataAdapter<AnimeData, TopAnimeAdapter.AnimeViewHo
     class AnimeViewHolder(private val binding: ItemAnimeBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(anime: AnimeData) {
-            binding.animeName.text = anime.title
-            Glide.with(binding.animePic.context)
-                .load(anime.images.webp.largeImageUrl)
-                .into(binding.animePic)
+            binding.apply {
+                animeName.text = anime.title
+                animeRating.text = anime.score.toString()
+                Glide.with(animePic.context)
+                    .load(anime.images.webp.largeImageUrl)
+                    .into(animePic)
+            }
         }
     }
 }
