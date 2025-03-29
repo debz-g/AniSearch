@@ -4,9 +4,11 @@ import android.app.Activity
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
+import android.os.SystemClock
 import android.view.View
 import android.view.View.GONE
 import android.view.View.INVISIBLE
+import android.view.View.OnClickListener
 import android.view.View.VISIBLE
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
@@ -62,4 +64,21 @@ fun Activity.updateSystemBarIconsColor(color: Int){
         changeSystemBarsIconsAppearance(isLight = true)
     else
         changeSystemBarsIconsAppearance(isLight = false)
+}
+
+class OnSingleClickListener(private val block: () -> Unit) : OnClickListener {
+
+    private var lastClickTime = 0L
+
+    override fun onClick(view: View) {
+        if (SystemClock.elapsedRealtime() - lastClickTime < 600) {
+            return
+        }
+        lastClickTime = SystemClock.elapsedRealtime()
+        block()
+    }
+}
+
+fun View.setOnSingleClickListener(block: () -> Unit) {
+    setOnClickListener(OnSingleClickListener(block))
 }

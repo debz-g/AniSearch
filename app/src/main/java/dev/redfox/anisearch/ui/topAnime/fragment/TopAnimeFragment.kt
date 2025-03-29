@@ -13,7 +13,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import dev.redfox.anisearch.MainActivity
 import dev.redfox.anisearch.R
 import dev.redfox.anisearch.databinding.FragmentTopAnimeBinding
+import dev.redfox.anisearch.ui.animeDetails.AnimeDetailsBottomSheetFragment
 import dev.redfox.anisearch.ui.topAnime.adapter.TopAnimeAdapter
+import dev.redfox.anisearch.utils.animeDetailsDialogTag
 import dev.redfox.anisearch.utils.changeBackgroundDrawableColor
 import dev.redfox.anisearch.utils.getColorCompat
 import dev.redfox.anisearch.utils.getModelView
@@ -32,7 +34,11 @@ class TopAnimeFragment : Fragment() {
     private lateinit var mContext: Context
     private lateinit var parentActivity: MainActivity
     private lateinit var viewModel: TopAnimeViewModel
-    private val animeAdapter = TopAnimeAdapter()
+    private val animeAdapter = TopAnimeAdapter(onItemClick = {
+        AnimeDetailsBottomSheetFragment.getInstance().show(childFragmentManager,
+            animeDetailsDialogTag
+        )
+    })
 
     companion object {
         fun getInstance() = TopAnimeFragment()

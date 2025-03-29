@@ -8,10 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import dev.redfox.anisearch.databinding.FragmentScheduleAnimeBinding
 import dev.redfox.anisearch.databinding.FragmentScheduleDayBinding
 import dev.redfox.anisearch.ui.schedule.adapter.ScheduleAdapter
-import dev.redfox.anisearch.utils.Constants
+import dev.redfox.anisearch.utils.PARAM_ARG_1
 import dev.redfox.anisearch.utils.getModelView
 import dev.redfox.anisearch.viewmodel.ScheduleViewModel
 import kotlinx.coroutines.flow.collectLatest
@@ -29,7 +28,7 @@ class ScheduleDayFragment: Fragment() {
         fun newInstance(day: String): ScheduleDayFragment {
             val fragment = ScheduleDayFragment()
             fragment.arguments = Bundle().apply {
-                putString(Constants.PARAM_ARG_1, day)
+                putString(PARAM_ARG_1, day)
             }
             return fragment
         }

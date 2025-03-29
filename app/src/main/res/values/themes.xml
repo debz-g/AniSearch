@@ -56,7 +56,6 @@
     </style>
 
 
-
     <!--Font Styles-->
     <style name="RobotoSemiBold">
         <item name="android:includeFontPadding">false</item>
@@ -281,6 +280,24 @@
 
     <style name="RobotoRegularOrange12" parent="RobotoRegularOrange">
         <item name="android:textSize">@dimen/text12</item>
+    </style>
+
+
+    <style name="MyMaterialFilledWhiteButton44" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/semibold</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:backgroundTint">@color/material_button_selector</item>
+        <item name="android:textSize">@dimen/text16</item>
+        <item name="android:layout_height">@dimen/dimen44</item>
+        <item name="rippleColor">@color/colorGrayLight</item>
+    </style>
+
+    <style name="MyMaterialFilledWhiteButton42" parent="MyMaterialFilledWhiteButton44">
+        <item name="android:layout_height">@dimen/dimen42</item>
     </style>
 
 </resources>

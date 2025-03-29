@@ -1,6 +1,7 @@
 package dev.redfox.anisearch.network
 
-import dev.redfox.anisearch.utils.Constants.Companion.BASE_URL
+
+import dev.redfox.anisearch.utils.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
