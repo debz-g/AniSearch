@@ -97,6 +97,8 @@ dependencies {
     implementation(libs.chip.navigation.bar)
     //lottie
     implementation(libs.lottie)
+    //browser
+    implementation(libs.androidx.browser)
 }
 
 buildscript {

@@ -34,11 +34,7 @@ class TopAnimeFragment : Fragment() {
     private lateinit var mContext: Context
     private lateinit var parentActivity: MainActivity
     private lateinit var viewModel: TopAnimeViewModel
-    private val animeAdapter = TopAnimeAdapter(onItemClick = {
-        AnimeDetailsBottomSheetFragment.getInstance().show(childFragmentManager,
-            animeDetailsDialogTag
-        )
-    })
+    private lateinit var animeAdapter: TopAnimeAdapter
 
     companion object {
         fun getInstance() = TopAnimeFragment()
@@ -87,6 +83,14 @@ class TopAnimeFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
+        animeAdapter = TopAnimeAdapter(onItemClick = { animeChildData ->
+            AnimeDetailsBottomSheetFragment.getInstance(
+                animeChildData
+            ).show(
+                childFragmentManager,
+                animeDetailsDialogTag
+            )
+        })
         binding.rvAnimeList.apply {
             setHasFixedSize(true)
             layoutManager = GridLayoutManager(mContext, 2) // 2 columns

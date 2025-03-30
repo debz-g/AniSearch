@@ -1,45 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fl_anime_details"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorBlack">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_anime_banner"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/hero_fragment_banner_height"
-        android:scaleType="fitXY"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/mb_mal_link"
-        style="@style/MyMaterialFilledWhiteButton42"
-        android:layout_width="0dp"
-        android:layout_marginVertical="@dimen/dimen20"
-        android:layout_marginStart="@dimen/dimen16"
-        android:layout_marginEnd="@dimen/dimen16"
-        android:text="@string/watch_trailer"
-        android:visibility="visible"
-        app:icon="@drawable/ic_youtube_16"
-        app:iconTint="@color/colorRedPink"
-        app:iconGravity="textStart"
-        app:layout_constraintEnd_toStartOf="@id/mb_watch_trailer"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_anime_banner" />
+        <!-- Status bar placeholder -->
+  <!--      <View
+            android:id="@+id/anime_details_status_bar_placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen24"
+            android:background="@drawable/background_status_bar"
+            android:elevation="0dp"
+            android:outlineProvider="none"
+            android:translationZ="0dp"
+            app:elevation="0dp" />-->
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/mb_watch_trailer"
-        style="@style/MyMaterialFilledWhiteButton42"
-        android:layout_width="0dp"
-        android:layout_marginVertical="@dimen/dimen20"
-        android:layout_marginEnd="@dimen/dimen16"
-        android:text="@string/watch_trailer"
-        android:visibility="visible"
-        app:icon="@drawable/ic_mal_14"
-        app:iconTint="@color/colorBlue"
-        app:iconGravity="textStart"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/mb_mal_link"
-        app:layout_constraintTop_toBottomOf="@id/iv_anime_banner" />
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/abl_published_content_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBlack">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:fitsSystemWindows="true"
+                android:paddingBottom="@dimen/dimen15"
+                app:contentScrim="@color/colorBlack"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:titleEnabled="false">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_anime_details_collapsingLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_anime_banner"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/hero_fragment_banner_height"
+                        android:scaleType="fitXY"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/mb_mal_link"
+                        style="@style/MyMaterialFilledWhiteButton42"
+                        android:layout_width="0dp"
+                        android:layout_marginVertical="@dimen/dimen20"
+                        android:layout_marginStart="@dimen/dimen16"
+                        android:layout_marginEnd="@dimen/dimen16"
+                        android:text="@string/watch_trailer"
+                        android:visibility="visible"
+                        app:icon="@drawable/ic_youtube_16"
+                        app:iconGravity="textStart"
+                        app:iconTint="@color/colorRedPink"
+                        app:layout_constraintEnd_toStartOf="@id/mb_watch_trailer"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/iv_anime_banner" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/mb_watch_trailer"
+                        style="@style/MyMaterialFilledWhiteButton42"
+                        android:layout_width="0dp"
+                        android:layout_marginVertical="@dimen/dimen20"
+                        android:layout_marginEnd="@dimen/dimen16"
+                        android:text="@string/mal_link"
+                        android:visibility="visible"
+                        app:icon="@drawable/ic_mal_14"
+                        app:iconGravity="textStart"
+                        app:iconTint="@color/colorBlue"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/mb_mal_link"
+                        app:layout_constraintTop_toBottomOf="@id/iv_anime_banner" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_anime_genre"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen12"
+                        app:layout_constraintTop_toBottomOf="@id/mb_watch_trailer" />
+
+                    <TextView
+                        android:id="@+id/tv_anime_details_description"
+                        style="@style/SubTitleStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/dimen16"
+                        android:layout_marginTop="@dimen/dimen15"
+                        app:layout_constraintTop_toBottomOf="@+id/rv_anime_genre"
+                        tools:text="@string/dummy_text" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/toolbar_anime_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen60"
+                    android:layout_gravity="top"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    app:layout_collapseMode="pin"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clipChildren="false"
+                        android:clipToPadding="false">
+
+                        <ImageButton
+                            android:id="@+id/ib_anime_details_backIcon"
+                            android:layout_width="@dimen/dimen40"
+                            android:layout_height="@dimen/dimen40"
+                            android:layout_marginTop="@dimen/dimen8"
+                            android:background="@drawable/round_filled_light_black"
+                            android:contentDescription="@string/back"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ic_back" />
+
+                        <TextView
+                            android:id="@+id/tv_anime_details_toolbarTitle"
+                            style="@style/PoppinsSemiBoldWhite"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/dimen15"
+                            android:singleLine="true"
+                            android:textSize="@dimen/text18"
+                            app:layout_constraintBottom_toBottomOf="@+id/ib_anime_details_backIcon"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/ib_anime_details_backIcon"
+                            app:layout_constraintTop_toTopOf="@+id/ib_anime_details_backIcon"
+                            tools:text="The Indian Paranormal Podcast" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.appbar.MaterialToolbar>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tl_anime_details_tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen56"
+                    android:layout_gravity="bottom"
+                    android:layout_marginHorizontal="@dimen/dimen16"
+                    android:background="@color/colorBlack"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tabGravity="fill"
+                    app:tabIndicatorColor="@color/colorDarkRedPink"
+                    app:tabIndicatorHeight="2dp"
+                    app:tabMode="fixed"
+                    app:tabRippleColor="@color/colorBlack63" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="@dimen/dimen16"
+                    android:background="@color/colorBlack80"
+                    app:layout_constraintTop_toBottomOf="@+id/tl_anime_details_tabs" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nsv_published_content_info"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fcv_published_content_info_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fcv_published_content_info_childContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+</FrameLayout>

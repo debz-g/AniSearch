@@ -282,6 +282,12 @@
         <item name="android:textSize">@dimen/text12</item>
     </style>
 
+    <style name="SubTitleStyle">
+        <item name="android:textColor">@color/subTitleText</item>
+        <item name="android:textSize">@dimen/text14</item>
+        <item name="fontFamily">@font/regular</item>
+        <item name="android:fontFamily">@font/regular</item>
+    </style>
 
     <style name="MyMaterialFilledWhiteButton44" parent="Widget.MaterialComponents.Button.UnelevatedButton">
         <item name="android:textAllCaps">false</item>

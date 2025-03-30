@@ -2,17 +2,18 @@ package dev.redfox.anisearch.ui.topAnime.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import dev.redfox.anisearch.databinding.ItemAnimeBinding
+import dev.redfox.anisearch.models.AnimeChildData
 import dev.redfox.anisearch.models.AnimeData
+import dev.redfox.anisearch.models.GenericMalItem
 import dev.redfox.anisearch.utils.AnimeDiffCallback
 import dev.redfox.anisearch.utils.setOnSingleClickListener
 
 class TopAnimeAdapter(
-    private val onItemClick: (Int) -> Unit
+    private val onItemClick: (AnimeChildData) -> Unit
 ) : PagingDataAdapter<AnimeData, TopAnimeAdapter.AnimeViewHolder>(
     AnimeDiffCallback()
 ) {
@@ -34,7 +35,19 @@ class TopAnimeAdapter(
         fun bind(anime: AnimeData) {
             binding.apply {
                 itemView.setOnSingleClickListener {
-                    onItemClick(0)
+                    anime.images.webp.largeImageUrl?.let { largeImageUrl ->
+                        onItemClick(
+                            AnimeChildData(
+                                malId = anime.malId,
+                                image = largeImageUrl,
+                                title = anime.title,
+                                description = anime.synopsis,
+                                linkMAL = anime.url,
+                                linkTrailer = anime.trailer?.url,
+                                genre = extractNames(anime.genres)
+                            )
+                        )
+                    }
                 }
 
                 animeName.text = anime.title
@@ -47,5 +60,9 @@ class TopAnimeAdapter(
 
             }
         }
+    }
+
+    fun extractNames(items: List<GenericMalItem>): List<String> {
+        return items.mapNotNull { it.name }
     }
 }

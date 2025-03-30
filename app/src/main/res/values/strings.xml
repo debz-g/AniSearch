@@ -6,4 +6,12 @@
     <string name="favourites">Favourites</string>
     <string name="news">News</string>
     <string name="watch_trailer">Watch Trailer</string>
+    <string name="mal_link">MAL</string>
+
+    <string name="dummy_text">The sky is the appearance of the atmosphere around the surface of the planet from our point of view. We see many objects that are actually in space such as the Sun, the Moon, and stars because they are in the sky.  The deepness of the blue increases as we look toward the horizon, and up to the point </string>
+    <string name="back">Back</string><string name="read_more">Read more</string>
+    <string name="read_less">Read less</string>
+    <string name="not_listed_on_mal">Not listed on MAL</string>
+    <string name="trailer_link_not_found">Trailer Link Not Found</string>
+
 </resources>
