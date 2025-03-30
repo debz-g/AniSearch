@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mcv_tags_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="@dimen/dimen5"
+    android:backgroundTint="@color/colorOrangeDark"
+    app:cardCornerRadius="@dimen/dimen6"
+    app:strokeColor="@color/colorGray50"
+    app:strokeWidth="@dimen/dimen0">
+
+    <TextView
+        android:id="@+id/tv_tag_item_text"
+        style="@style/PoppinsSemiBold"
+        android:textSize="@dimen/text14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorOrangeLight"
+        android:paddingHorizontal="@dimen/dimen12"
+        android:paddingVertical="@dimen/dimen6"
+        tools:text="Adventure" />
+</com.google.android.material.card.MaterialCardView>

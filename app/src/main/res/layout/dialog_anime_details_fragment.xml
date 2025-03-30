@@ -84,13 +84,6 @@
                         app:layout_constraintStart_toEndOf="@id/mb_watch_trailer"
                         app:layout_constraintTop_toBottomOf="@id/iv_anime_banner" />
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_anime_genre"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dimen12"
-                        app:layout_constraintTop_toBottomOf="@id/mb_watch_trailer" />
-
                     <TextView
                         android:id="@+id/tv_anime_details_description"
                         style="@style/SubTitleStyle"
@@ -98,7 +91,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/dimen16"
                         android:layout_marginTop="@dimen/dimen15"
-                        app:layout_constraintTop_toBottomOf="@+id/rv_anime_genre"
+                        app:layout_constraintTop_toBottomOf="@+id/mb_mal_link"
                         tools:text="@string/dummy_text" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

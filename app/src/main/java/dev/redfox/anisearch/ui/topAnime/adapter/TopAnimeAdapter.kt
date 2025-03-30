@@ -53,7 +53,8 @@ class TopAnimeAdapter(
                                 episodes = anime.episodes,
                                 members = anime.members,
                                 rank = anime.rank,
-                                favourites = anime.favorites
+                                favourites = anime.favorites,
+                                tags = extractNames(anime.genres)
                             )
                         )
                     }

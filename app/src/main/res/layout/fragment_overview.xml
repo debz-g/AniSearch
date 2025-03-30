@@ -4,98 +4,122 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="@dimen/dimen16">
 
     <!-- Row 1 -->
     <dev.redfox.anisearch.ui.customViews.InfoCardView
         android:id="@+id/card_aired"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/dimen0"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="@dimen/dimen8"
+        android:layout_marginBottom="@dimen/dimen8"
         app:imageDrawable="@drawable/ic_calendar"
-        app:primaryText="@string/label_aired"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/card_duration"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.48"
+        app:primaryText="@string/label_aired"
         tools:secondaryText="Sep 29, 2023 to Mar 22, 2024" />
 
     <dev.redfox.anisearch.ui.customViews.InfoCardView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:id="@+id/card_duration"
-        android:layout_marginBottom="8dp"
+        android:layout_width="@dimen/dimen0"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen8"
+        android:layout_marginBottom="@dimen/dimen8"
         app:imageDrawable="@drawable/ic_duration"
-        app:primaryText="@string/label_duration"
-        app:layout_constraintStart_toEndOf="@id/card_aired"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/card_aired"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.48"
+        app:primaryText="@string/label_duration"
         tools:secondaryText="24 min per ep" />
 
     <!-- Row 2 -->
     <dev.redfox.anisearch.ui.customViews.InfoCardView
         android:id="@+id/card_episodes"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/dimen0"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="@dimen/dimen16"
+        android:layout_marginEnd="@dimen/dimen8"
+        android:layout_marginBottom="@dimen/dimen8"
         app:imageDrawable="@drawable/ic_episodes"
-        app:primaryText="@string/label_episodes"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/card_members"
-        app:layout_constraintTop_toBottomOf="@id/card_aired"
         app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_aired"
         app:layout_constraintWidth_percent="0.48"
+        app:primaryText="@string/label_episodes"
         tools:secondaryText="12" />
 
     <dev.redfox.anisearch.ui.customViews.InfoCardView
         android:id="@+id/card_members"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/dimen0"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="@dimen/dimen8"
+        android:layout_marginTop="@dimen/dimen16"
+        android:layout_marginBottom="@dimen/dimen8"
         app:imageDrawable="@drawable/ic_members"
-        app:primaryText="@string/label_members"
-        app:layout_constraintStart_toEndOf="@id/card_episodes"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/card_episodes"
         app:layout_constraintTop_toBottomOf="@id/card_duration"
         app:layout_constraintWidth_percent="0.48"
+        app:primaryText="@string/label_members"
         tools:secondaryText="2,534,129" />
 
     <!-- Row 3 -->
     <dev.redfox.anisearch.ui.customViews.InfoCardView
         android:id="@+id/card_rank"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/dimen0"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="@dimen/dimen16"
+        android:layout_marginEnd="@dimen/dimen8"
         app:imageDrawable="@drawable/ic_rank"
-        app:primaryText="@string/label_rank"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/card_favorites"
-        app:layout_constraintTop_toBottomOf="@id/card_episodes"
         app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_episodes"
         app:layout_constraintWidth_percent="0.48"
+        app:primaryText="@string/label_rank"
         tools:secondaryText="#42" />
 
     <dev.redfox.anisearch.ui.customViews.InfoCardView
         android:id="@+id/card_favorites"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/dimen0"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="@dimen/dimen8"
+        android:layout_marginTop="@dimen/dimen16"
         app:imageDrawable="@drawable/ic_favourites"
-        app:primaryText="@string/label_favorites"
-        app:layout_constraintStart_toEndOf="@id/card_rank"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/card_rank"
         app:layout_constraintTop_toBottomOf="@id/card_members"
         app:layout_constraintWidth_percent="0.48"
+        app:primaryText="@string/label_favorites"
         tools:secondaryText="125,432" />
+
+    <TextView
+        android:id="@+id/tv_overview_genres"
+        style="@style/PoppinsBold20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen6"
+        android:layout_marginTop="@dimen/dimen16"
+        android:text="@string/genres"
+        android:drawablePadding="@dimen/dimen4"
+        android:textColor="@color/colorWhite"
+        app:drawableStartCompat="@drawable/ic_genre"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_rank" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_overview_genre"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen0"
+        android:layout_marginTop="@dimen/dimen12"
+        tools:listitem="@layout/item_tag"
+        tools:itemCount="3"
+        android:layout_marginHorizontal="@dimen/dimen8"
+        app:layout_constraintTop_toBottomOf="@id/tv_overview_genres" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

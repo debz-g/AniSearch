@@ -20,6 +20,8 @@
     <color name="subTitleText">#B8B8B8</color>
 
     <color name="colorOrange">#FB923C</color>
+    <color name="colorOrangeDark">#B33F00</color>
+    <color name="colorOrangeLight">#FFBE79</color>
     <color name="colorRed">#ED0A28</color>
     <color name="colorRed30">#4DED0A28</color>
     <color name="colorRed20">#33ED0A28</color>

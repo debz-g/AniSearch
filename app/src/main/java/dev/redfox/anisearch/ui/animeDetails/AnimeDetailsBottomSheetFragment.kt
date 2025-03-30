@@ -156,11 +156,11 @@ class AnimeDetailsBottomSheetFragment : BottomSheetDialogFragment() {
                         binding.apply {
                             tlAnimeDetailsTabs.setOnSelectView(mContext, position, false)
                             ablPublishedContentInfo.setExpanded(false, true)
-                            when(position){
-                               0 -> {
-                                   binding.nsvAnimeDetails.setOnScrollChangeListener(null as NestedScrollView.OnScrollChangeListener?)
-                                   showFragment(OverviewFragment.getInstance(animeDetailsVm.getOverviewData()))
-                               }
+                            when (position) {
+                                0 -> {
+                                    binding.nsvAnimeDetails.setOnScrollChangeListener(null as NestedScrollView.OnScrollChangeListener?)
+                                    showFragment(OverviewFragment.getInstance(animeDetailsVm.getOverviewData()))
+                                }
 
                                 1 -> {
 
@@ -222,6 +222,10 @@ class AnimeDetailsBottomSheetFragment : BottomSheetDialogFragment() {
                             R.string.not_listed_on_mal
                         )
                     )
+            }
+
+            ibAnimeDetailsBackIcon.setOnSingleClickListener {
+                dismiss()
             }
         }
     }

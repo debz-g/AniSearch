@@ -10,5 +10,6 @@ data class OverviewData(
     val episodes: Int?,
     val members: Int?,
     val rank: Int?,
-    val favourites: Int?
+    val favourites: Int?,
+    val tags: List<String>?
 ) : Parcelable
