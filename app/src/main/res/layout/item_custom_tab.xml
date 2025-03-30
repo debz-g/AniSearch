@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tv_custom_tab_item_text"
+    style="@style/RobotoBoldWhite"
+    android:textSize="@dimen/text12"
+    android:layout_width="match_parent"
+    android:singleLine="true"
+    android:layout_height="wrap_content"
+    android:drawablePadding="@dimen/dimen8"
+    android:gravity="center"
+    android:textColor="@color/colorTransparentWhite50"
+    tools:text="LOCAL MUSIC" />

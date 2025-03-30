@@ -9,11 +9,12 @@ import dev.redfox.anisearch.databinding.ItemAnimeBinding
 import dev.redfox.anisearch.models.AnimeChildData
 import dev.redfox.anisearch.models.AnimeData
 import dev.redfox.anisearch.models.GenericMalItem
+import dev.redfox.anisearch.models.OverviewData
 import dev.redfox.anisearch.utils.AnimeDiffCallback
 import dev.redfox.anisearch.utils.setOnSingleClickListener
 
 class TopAnimeAdapter(
-    private val onItemClick: (AnimeChildData) -> Unit
+    private val onItemClick: (AnimeChildData, OverviewData) -> Unit
 ) : PagingDataAdapter<AnimeData, TopAnimeAdapter.AnimeViewHolder>(
     AnimeDiffCallback()
 ) {
@@ -45,6 +46,14 @@ class TopAnimeAdapter(
                                 linkMAL = anime.url,
                                 linkTrailer = anime.trailer?.url,
                                 genre = extractNames(anime.genres)
+                            ),
+                            OverviewData(
+                                aired = anime.aired.string,
+                                duration = anime.duration,
+                                episodes = anime.episodes,
+                                members = anime.members,
+                                rank = anime.rank,
+                                favourites = anime.favorites
                             )
                         )
                     }

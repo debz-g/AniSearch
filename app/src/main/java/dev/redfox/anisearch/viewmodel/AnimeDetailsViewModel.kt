@@ -11,10 +11,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dev.redfox.anisearch.R
 import dev.redfox.anisearch.models.AnimeChildData
+import dev.redfox.anisearch.models.OverviewData
 import dev.redfox.anisearch.network.AnimeRepository
 import dev.redfox.anisearch.network.RetrofitClient
 import dev.redfox.anisearch.utils.DESCRIPTION_WORD_LIMIT
 import dev.redfox.anisearch.utils.PARAM_DATA
+import dev.redfox.anisearch.utils.PARAM_DATA_ALT
 import dev.redfox.anisearch.utils.getColorCompat
 import dev.redfox.anisearch.utils.getDiscountedWords
 import dev.redfox.anisearch.utils.getWordCount
@@ -30,21 +32,30 @@ class AnimeDetailsViewModel : ViewModel() {
     }
 
     private var animeChildData: AnimeChildData? = null
+    private var overviewData: OverviewData? = null
 
     fun handleExtras(extras: Bundle?) {
         extras?.let { args ->
             args.parcelable<AnimeChildData>(PARAM_DATA)?.let { data ->
                 animeChildData = data
             }
+            args.parcelable<OverviewData>(PARAM_DATA_ALT)?.let { data ->
+                overviewData = data
+            }
         }
     }
 
     fun getAnimeChildData() = animeChildData
+    fun getOverviewData() = overviewData
 
     fun getGenres() = animeChildData?.genre
 
     fun getMalLink() = animeChildData?.linkMAL
     fun getTrailerLink() = animeChildData?.linkTrailer
+
+    fun getTabList(mContext: Context): Array<String> =
+        mContext.resources.getStringArray(R.array.anime_details_series_tabs)
+
 
     val descriptionSpanClickObserver: MutableLiveData<Boolean> by lazy {
         MutableLiveData()

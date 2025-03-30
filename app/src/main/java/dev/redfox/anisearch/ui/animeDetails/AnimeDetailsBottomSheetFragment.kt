@@ -10,18 +10,32 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.FrameLayout
+import androidx.core.widget.NestedScrollView
+import androidx.fragment.app.Fragment
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.android.material.tabs.TabLayout
 import dev.redfox.anisearch.R
 import dev.redfox.anisearch.databinding.DialogAnimeDetailsFragmentBinding
+import dev.redfox.anisearch.databinding.ItemCustomTabBinding
 import dev.redfox.anisearch.models.AnimeChildData
+import dev.redfox.anisearch.models.OverviewData
+import dev.redfox.anisearch.ui.overview.OverviewFragment
 import dev.redfox.anisearch.utils.PARAM_DATA
+import dev.redfox.anisearch.utils.PARAM_DATA_ALT
+import dev.redfox.anisearch.utils.disappear
 import dev.redfox.anisearch.utils.getModelView
+import dev.redfox.anisearch.utils.hide
 import dev.redfox.anisearch.utils.openUrlWithCustomTab
+import dev.redfox.anisearch.utils.replaceChildFragment
 import dev.redfox.anisearch.utils.setImage
+import dev.redfox.anisearch.utils.setOnSelectView
 import dev.redfox.anisearch.utils.setOnSingleClickListener
+import dev.redfox.anisearch.utils.setUnSelectView
+import dev.redfox.anisearch.utils.show
 import dev.redfox.anisearch.utils.showToast
 import dev.redfox.anisearch.viewmodel.AnimeDetailsViewModel
+import kotlin.math.abs
 
 class AnimeDetailsBottomSheetFragment : BottomSheetDialogFragment() {
 
@@ -33,10 +47,14 @@ class AnimeDetailsBottomSheetFragment : BottomSheetDialogFragment() {
     }
 
     companion object {
-        fun getInstance(animeChildData: AnimeChildData): AnimeDetailsBottomSheetFragment {
+        fun getInstance(
+            animeChildData: AnimeChildData,
+            overviewData: OverviewData
+        ): AnimeDetailsBottomSheetFragment {
             val fragment = AnimeDetailsBottomSheetFragment()
             fragment.arguments = Bundle().apply {
                 putParcelable(PARAM_DATA, animeChildData)
+                putParcelable(PARAM_DATA_ALT, overviewData)
             }
             return fragment
         }
@@ -74,9 +92,11 @@ class AnimeDetailsBottomSheetFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         animeDetailsVm.handleExtras(arguments)
-        setupUI()
         initObservers()
         initClickListeners()
+        handleAppBarScroll()
+        initTabLayout()
+        setupUI()
     }
 
     private fun setupUI() {
@@ -99,6 +119,78 @@ class AnimeDetailsBottomSheetFragment : BottomSheetDialogFragment() {
         }
     }
 
+    private fun handleAppBarScroll() {
+        binding.apply {
+            ablPublishedContentInfo.addOnOffsetChangedListener { appBarLayout, verticalOffset ->
+                val percentage = (abs(verticalOffset).toFloat() / appBarLayout.height)
+                if (percentage > .75) {
+                    tvAnimeDetailsDescription.disappear()
+                    tvAnimeDetailsToolbarTitle.show()
+                } else {
+                    tvAnimeDetailsToolbarTitle.hide()
+                    tvAnimeDetailsDescription.show()
+                }
+            }
+        }
+    }
+
+    private fun initTabLayout() {
+        val list = animeDetailsVm.getTabList(mContext)
+        if (list.isNotEmpty()) {
+            binding.tlAnimeDetailsTabs.show()
+            list.forEach {
+                val tabItemBinding = ItemCustomTabBinding.inflate(LayoutInflater.from(mContext))
+                tabItemBinding.tvCustomTabItemText.apply {
+                    text = it
+                    isAllCaps = true
+                }
+                val tab = binding.tlAnimeDetailsTabs.newTab()
+                tab.customView = tabItemBinding.root
+                binding.tlAnimeDetailsTabs.addTab(tab)
+            }
+            binding.tlAnimeDetailsTabs.addOnTabSelectedListener(object :
+                TabLayout.OnTabSelectedListener {
+
+                override fun onTabSelected(tab: TabLayout.Tab?) {
+                    tab?.position?.let { position ->
+                        binding.apply {
+                            tlAnimeDetailsTabs.setOnSelectView(mContext, position, false)
+                            ablPublishedContentInfo.setExpanded(false, true)
+                            when(position){
+                               0 -> {
+                                   binding.nsvAnimeDetails.setOnScrollChangeListener(null as NestedScrollView.OnScrollChangeListener?)
+                                   showFragment(OverviewFragment.getInstance(animeDetailsVm.getOverviewData()))
+                               }
+
+                                1 -> {
+
+                                }
+
+                                2 -> {
+
+                                }
+                            }
+                        }
+                    }
+                }
+
+                override fun onTabUnselected(tab: TabLayout.Tab?) {
+                    tab?.let {
+                        binding.tlAnimeDetailsTabs.setUnSelectView(mContext, it.position)
+                    }
+                }
+
+                override fun onTabReselected(tab: TabLayout.Tab?) {
+                    binding.ablPublishedContentInfo.setExpanded(false, true)
+                }
+            })
+            // default loading view
+            binding.tlAnimeDetailsTabs.setOnSelectView(mContext, 0, false)
+            showFragment(OverviewFragment.getInstance(animeDetailsVm.getOverviewData()))
+        } else
+            binding.tlAnimeDetailsTabs.hide()
+    }
+
     private fun initObservers() {
         animeDetailsVm.apply {
             descriptionSpanClickObserver.observe(viewLifecycleOwner) { showFullData ->
@@ -115,11 +207,12 @@ class AnimeDetailsBottomSheetFragment : BottomSheetDialogFragment() {
     private fun initClickListeners() {
         binding.apply {
             mbWatchTrailer.setOnSingleClickListener {
-                animeDetailsVm.getTrailerLink()?.let { mContext.openUrlWithCustomTab(it) } ?: mContext.showToast(
-                    mContext.getString(
-                        R.string.trailer_link_not_found
+                animeDetailsVm.getTrailerLink()?.let { mContext.openUrlWithCustomTab(it) }
+                    ?: mContext.showToast(
+                        mContext.getString(
+                            R.string.trailer_link_not_found
+                        )
                     )
-                )
             }
 
             mbMalLink.setOnSingleClickListener {
@@ -131,5 +224,10 @@ class AnimeDetailsBottomSheetFragment : BottomSheetDialogFragment() {
                     )
             }
         }
+    }
+
+
+    private fun showFragment(fragment: Fragment) {
+        replaceChildFragment(fragment, R.id.fcv_anime_details_container)
     }
 }

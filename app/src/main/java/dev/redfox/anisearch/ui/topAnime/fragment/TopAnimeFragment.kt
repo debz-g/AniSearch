@@ -83,9 +83,9 @@ class TopAnimeFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        animeAdapter = TopAnimeAdapter(onItemClick = { animeChildData ->
+        animeAdapter = TopAnimeAdapter(onItemClick = { animeChildData, overviewData ->
             AnimeDetailsBottomSheetFragment.getInstance(
-                animeChildData
+                animeChildData, overviewData
             ).show(
                 childFragmentManager,
                 animeDetailsDialogTag

@@ -18,6 +18,7 @@ import android.view.View.OnClickListener
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
@@ -32,6 +33,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import dev.redfox.anisearch.R
 import androidx.core.net.toUri
+import com.google.android.material.tabs.TabLayout
 
 
 fun View.show() {
@@ -206,5 +208,39 @@ fun Context.openUrlWithCustomTab(url: String) {
         customTabsIntent.launchUrl(this, url.toUri())
     } catch (e: Exception) {
       // No Ops
+    }
+}
+
+fun TabLayout.setOnSelectView(
+    mContext: Context,
+    position: Int = 0,
+    showDrawable: Boolean = true
+) {
+    val tab = getTabAt(position)
+    tab?.customView?.let { customView ->
+        if (customView is TextView)
+            customView.apply {
+                if (showDrawable)
+                    setCompoundDrawablesWithIntrinsicBounds(
+                        0,
+                        0,
+                        0,
+                        R.drawable.ic_gradient_bullet
+                    )
+                else
+                    setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
+                setTextColor(mContext.getColorCompat(R.color.colorWhite))
+            }
+    }
+}
+
+fun TabLayout.setUnSelectView(mContext: Context, position: Int) {
+    val tab = getTabAt(position)
+    tab?.customView?.let { customView ->
+        if (customView is TextView)
+            customView.apply {
+                setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
+                setTextColor(mContext.getColorCompat(R.color.colorTransparentWhite50))
+            }
     }
 }

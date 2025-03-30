@@ -11,6 +11,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="colorBlack">#0C0C0D</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorTransparentWhite50">#80FFFFFF</color>
     <color name="colorBlack63">#A10C0C0D</color>
     <color name="colorBlack90">#EB121212</color>
     <color name="colorBlack80">#CC0C0C0D</color>
@@ -36,4 +37,7 @@
     <color name="colorGray800">#27272A</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="colorGrayLight">#F0F0F0</color>
+
+    <color name="info_card_primary_text">#FFFFFF</color>
+    <color name="info_card_secondary_text">#B0B0B0</color>
 </resources>

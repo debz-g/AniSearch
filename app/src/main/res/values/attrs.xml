@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="InfoCardView">
+        <attr name="imageDrawable" format="reference" />
+        <attr name="primaryText" format="string|reference" />
+        <attr name="secondaryText" format="string|reference" />
+    </declare-styleable>
+</resources>

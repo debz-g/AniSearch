@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_info_cards"
+    android:padding="12dp">
+
+    <ImageView
+        android:id="@+id/info_card_image"
+        android:layout_width="@dimen/dimen24"
+        android:layout_height="@dimen/dimen24"
+        android:layout_marginStart="@dimen/dimen6"
+        android:contentDescription="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_calendar" />
+
+    <TextView
+        android:id="@+id/info_card_primary_text"
+        style="@style/PoppinsSemiBoldWhite"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:textColor="@color/info_card_primary_text"
+        android:textSize="@dimen/text12"
+        app:layout_constraintBottom_toTopOf="@id/info_card_secondary_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/info_card_image"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="Aired" />
+
+    <TextView
+        android:id="@+id/info_card_secondary_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/info_card_secondary_text"
+        style="@style/PoppinsLightWhite10"
+        android:maxLines="1"
+        android:marqueeRepeatLimit="3"
+        android:ellipsize="marquee"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/info_card_image"
+        app:layout_constraintTop_toBottomOf="@id/info_card_primary_text"
+        tools:text="Sep 29, 2023 to Mar 22, 2024" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

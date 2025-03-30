@@ -14,4 +14,17 @@
     <string name="not_listed_on_mal">Not listed on MAL</string>
     <string name="trailer_link_not_found">Trailer Link Not Found</string>
 
+    <string-array name="anime_details_series_tabs">
+        <item>OVERVIEW</item>
+        <item>EPISODES</item>
+        <item>CHARACTERS</item>
+    </string-array>
+
+    <string name="label_aired">Aired</string>
+    <string name="label_duration">Duration</string>
+    <string name="label_episodes">Episodes</string>
+    <string name="label_members">Members</string>
+    <string name="label_rank">Rank</string>
+    <string name="label_favorites">Favorites</string>
+
 </resources>
