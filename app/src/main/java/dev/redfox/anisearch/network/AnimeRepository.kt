@@ -6,11 +6,15 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.liveData
 import dev.redfox.anisearch.models.AnimeData
+import dev.redfox.anisearch.models.CharactersResponse
 import dev.redfox.anisearch.models.Episode
 import dev.redfox.anisearch.paging.EpisodesPagingSource
 import dev.redfox.anisearch.paging.SchedulePagingSource
 import dev.redfox.anisearch.paging.TopAnimePagingSource
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.withContext
+import retrofit2.Response
 
 class AnimeRepository(private val apiService: ServerInterface) {
 
@@ -31,13 +35,19 @@ class AnimeRepository(private val apiService: ServerInterface) {
     ).flow
 
     fun getAnimeEpisodes(animeId: Int?): Flow<PagingData<Episode>> = Pager(
-            config = PagingConfig(
-                pageSize = 10,
-                enablePlaceholders = false
-            ),
-            pagingSourceFactory = { EpisodesPagingSource(apiService, animeId) }
-        ).flow
+        config = PagingConfig(
+            pageSize = 10,
+            enablePlaceholders = false
+        ),
+        pagingSourceFactory = { EpisodesPagingSource(apiService, animeId) }
+    ).flow
+
+    suspend fun getAnimeCharacters(animeId: Int): Response<CharactersResponse> {
+        return withContext(Dispatchers.IO) {
+            apiService.getAnimeCharacters(animeId)
+        }
     }
+}
 
 
 /*@OptIn(ExperimentalPagingApi::class)

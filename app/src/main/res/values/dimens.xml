@@ -74,5 +74,7 @@
     <dimen name="banner300">300dp</dimen>
     <dimen name="banner400">400dp</dimen>
 
+    <dimen name="avatar60">60dp</dimen>
+
     <dimen name="hero_fragment_banner_height">450dp</dimen>
 </resources>

@@ -10,6 +10,7 @@ import android.os.Build.VERSION.SDK_INT
 import android.os.SystemClock
 import android.text.Html
 import android.text.Spanned
+import android.util.TypedValue
 import android.view.View
 import android.view.View.GONE
 import android.view.View.INVISIBLE
@@ -155,6 +156,31 @@ fun setImage(
     }
 }
 
+fun setImage(
+    mContext: Context,
+    imageUrl: String?,
+    imageView: ImageView,
+    placeHolder: Int,
+    isAnimated: Boolean = false
+) {
+    try {
+        val builder = Glide.with(mContext)
+            .applyDefaultRequestOptions(
+                RequestOptions()
+                    .placeholder(placeHolder)
+                    .diskCacheStrategy(DiskCacheStrategy.DATA)
+                    .error(placeHolder)
+            ).load(imageUrl)
+        if (isAnimated) {
+            builder.transition(DrawableTransitionOptions.withCrossFade(200))
+                .into(imageView)
+        } else
+            builder.into(imageView)
+    } catch (ex: Exception) {
+        ex.showLog()
+    }
+}
+
 @Suppress("DEPRECATION")
 fun String.setHtmlText(): Spanned {
     return if (SDK_INT >= Build.VERSION_CODES.N) {
@@ -254,7 +280,8 @@ fun extractNames(items: List<GenericMalItem>): List<String> {
 fun formatAiredDate(isoDate: String): String {
     // Parse the ISO date format (2002-02-17T00:00:00+00:00) to a readable format
     try {
-        val inputFormat = java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX", java.util.Locale.US)
+        val inputFormat =
+            java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX", java.util.Locale.US)
         val outputFormat = java.text.SimpleDateFormat("MMM dd, yyyy", java.util.Locale.US)
         val date = inputFormat.parse(isoDate)
         return date?.let { outputFormat.format(it) } ?: "Unknown"
@@ -264,3 +291,7 @@ fun formatAiredDate(isoDate: String): String {
 }
 
 fun Context.getDimensionPxSize(dimen: Int) = resources.getDimensionPixelSize(dimen)
+
+fun TextView.setTextDimension(dimen: Int) {
+    setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(dimen))
+}

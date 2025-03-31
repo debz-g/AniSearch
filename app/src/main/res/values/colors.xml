@@ -19,6 +19,7 @@
     <color name="colorBlack80">#CC0C0C0D</color>
     <color name="colorBlack100">#000000</color>
     <color name="colorLightBlack">#2B2B2B</color>
+    <color name="colorDark">#1D1D1D</color>
     <color name="subTitleText">#B8B8B8</color>
 
     <color name="colorOrange">#FB923C</color>

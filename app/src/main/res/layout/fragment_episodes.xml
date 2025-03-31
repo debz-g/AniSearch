@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingHorizontal="@dimen/dimen8"
+        android:layout_marginTop="@dimen/dimen16"
         android:clipToPadding="false"
         tools:listitem="@layout/item_episodes"
         tools:itemCount="5"

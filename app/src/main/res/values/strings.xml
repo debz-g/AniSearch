@@ -32,5 +32,7 @@
     <string name="retryApiCall">Retry</string>
     <string name="something_went_wrong">Something went wrong. Please try again.</string>
     <string name="episode_number">Ep %1$d</string>
+    <string name="character_name">Name: %1$s</string>
+    <string name="character_role">Role: %1$s</string>
 
 </resources>

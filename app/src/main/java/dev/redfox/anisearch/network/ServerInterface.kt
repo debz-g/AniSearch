@@ -1,7 +1,9 @@
 package dev.redfox.anisearch.network
 
+import dev.redfox.anisearch.models.CharactersResponse
 import dev.redfox.anisearch.models.CommonAnimeResponse
 import dev.redfox.anisearch.models.EpisodeResponse
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -21,4 +23,7 @@ interface ServerInterface {
 		@Path("id") animeId: Int,
 		@Query("page") page: Int
 	): EpisodeResponse
+
+	@GET("anime/{id}/characters")
+	suspend fun getAnimeCharacters(@Path("id") id: Int): Response<CharactersResponse>
 }

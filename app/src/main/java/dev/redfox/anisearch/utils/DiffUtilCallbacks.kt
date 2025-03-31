@@ -2,6 +2,7 @@ package dev.redfox.anisearch.utils
 
 import androidx.recyclerview.widget.DiffUtil
 import dev.redfox.anisearch.models.AnimeData
+import dev.redfox.anisearch.models.CharacterData
 import dev.redfox.anisearch.models.Episode
 
 class AnimeDiffCallback() : DiffUtil.ItemCallback<AnimeData>() {
@@ -35,6 +36,16 @@ class EpisodesDiffCallback() : DiffUtil.ItemCallback<Episode>() {
     }
 
     override fun areContentsTheSame(oldItem: Episode, newItem: Episode): Boolean {
+        return oldItem == newItem
+    }
+}
+
+class CharactersDiffCallback() : DiffUtil.ItemCallback<CharacterData>() {
+    override fun areItemsTheSame(oldItem: CharacterData, newItem: CharacterData): Boolean {
+        return oldItem.character.malId == newItem.character.malId
+    }
+
+    override fun areContentsTheSame(oldItem: CharacterData, newItem: CharacterData): Boolean {
         return oldItem == newItem
     }
 }

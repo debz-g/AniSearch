@@ -306,4 +306,16 @@
         <item name="android:layout_height">@dimen/dimen42</item>
     </style>
 
+    <style name="CircleOverlay" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="TopCurvedOverlay8" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">@dimen/dimen8</item>
+        <item name="cornerSizeTopLeft">@dimen/dimen8</item>
+        <item name="cornerSizeBottomRight">@dimen/dimen8</item>
+        <item name="cornerSizeBottomLeft">@dimen/dimen8</item>
+    </style>
 </resources>

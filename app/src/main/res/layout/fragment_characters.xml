@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorBlack">
+
+    <dev.redfox.anisearch.ui.customViews.MySmoothScrollRecyclerView
+        android:id="@+id/rv_characters"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="@dimen/dimen8"
+        android:clipToPadding="false"
+        android:layout_marginTop="@dimen/dimen16"
+        tools:listitem="@layout/item_episodes"
+        tools:itemCount="5"
+        android:paddingBottom="@dimen/dimen30"
+        app:layout_constraintTop_toTopOf="parent"
+        android:stateListAnimator="@null"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

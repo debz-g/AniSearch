@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="@dimen/dimen8"
+    android:background="@drawable/bg_characters"
+    android:padding="@dimen/dimen12">
+
+    <TextView
+        android:id="@+id/tv_characters_name"
+        style="@style/PoppinsRegularWhite14"
+        android:layout_width="@dimen/dimen0"
+        android:layout_marginEnd="@dimen/dimen6"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/iv_characters_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_characters_image"
+        tools:text="Name: Sung Jin Woo" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_characters_role"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_characters_name"
+        style="@style/PoppinsRegularLightGray12"
+        tools:text = "Role: Main"
+        app:layout_constraintBottom_toBottomOf="@id/iv_characters_image"
+        />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_characters_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/TopCurvedOverlay8"
+        tools:src="@drawable/user_placeholder" />
+</androidx.constraintlayout.widget.ConstraintLayout>
