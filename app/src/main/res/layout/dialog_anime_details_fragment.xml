@@ -14,15 +14,15 @@
         android:clipToPadding="false">
 
         <!-- Status bar placeholder -->
-  <!--      <View
-            android:id="@+id/anime_details_status_bar_placeholder"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen24"
-            android:background="@drawable/background_status_bar"
-            android:elevation="0dp"
-            android:outlineProvider="none"
-            android:translationZ="0dp"
-            app:elevation="0dp" />-->
+        <!--      <View
+                  android:id="@+id/anime_details_status_bar_placeholder"
+                  android:layout_width="match_parent"
+                  android:layout_height="@dimen/dimen24"
+                  android:background="@drawable/background_status_bar"
+                  android:elevation="0dp"
+                  android:outlineProvider="none"
+                  android:translationZ="0dp"
+                  app:elevation="0dp" />-->
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/abl_published_content_info"
@@ -85,13 +85,38 @@
                         app:layout_constraintTop_toBottomOf="@id/iv_anime_banner" />
 
                     <TextView
+                        android:id="@+id/tv_anime_details_English_Name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/dimen16"
+                        android:layout_marginTop="@dimen/dimen15"
+                        android:visibility="gone"
+                        tools:text="Solo Leveling"
+                        android:textSize="@dimen/text18"
+                        style="@style/PoppinsSemiBoldWhite"
+                        app:layout_constraintTop_toBottomOf="@id/mb_mal_link" />
+
+                    <TextView
+                        android:id="@+id/tv_anime_details_Japanese_Name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/dimen16"
+                        android:layout_marginTop="@dimen/dimen8"
+                        android:visibility="gone"
+                        android:textColor="@color/colorTransparentWhite50"
+                        tools:text="Solo Leveling"
+                        style="@style/PoppinsSemiBoldWhite"
+                        android:textSize="@dimen/text14"
+                        app:layout_constraintTop_toBottomOf="@id/tv_anime_details_English_Name" />
+
+                    <TextView
                         android:id="@+id/tv_anime_details_description"
                         style="@style/SubTitleStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/dimen16"
                         android:layout_marginTop="@dimen/dimen15"
-                        app:layout_constraintTop_toBottomOf="@+id/mb_mal_link"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_anime_details_Japanese_Name"
                         tools:text="@string/dummy_text" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

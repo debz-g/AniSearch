@@ -11,5 +11,7 @@ data class AnimeChildData(
     val description: String? = null,
     val linkMAL: String,
     val linkTrailer: String? = null,
+    val englishTitle: String? = null,
+    val japaneseTitle: String? = null,
     val genre: List<String>
 ): Parcelable

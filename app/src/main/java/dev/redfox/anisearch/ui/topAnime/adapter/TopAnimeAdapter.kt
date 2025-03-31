@@ -8,9 +8,9 @@ import com.bumptech.glide.Glide
 import dev.redfox.anisearch.databinding.ItemAnimeBinding
 import dev.redfox.anisearch.models.AnimeChildData
 import dev.redfox.anisearch.models.AnimeData
-import dev.redfox.anisearch.models.GenericMalItem
 import dev.redfox.anisearch.models.OverviewData
 import dev.redfox.anisearch.utils.AnimeDiffCallback
+import dev.redfox.anisearch.utils.extractNames
 import dev.redfox.anisearch.utils.setOnSingleClickListener
 
 class TopAnimeAdapter(
@@ -45,6 +45,8 @@ class TopAnimeAdapter(
                                 description = anime.synopsis,
                                 linkMAL = anime.url,
                                 linkTrailer = anime.trailer?.url,
+                                englishTitle = anime.titleEnglish,
+                                japaneseTitle = anime.titleJapanese,
                                 genre = extractNames(anime.genres)
                             ),
                             OverviewData(
@@ -54,7 +56,9 @@ class TopAnimeAdapter(
                                 members = anime.members,
                                 rank = anime.rank,
                                 favourites = anime.favorites,
-                                tags = extractNames(anime.genres)
+                                tags = extractNames(anime.genres),
+                                producers = extractNames(anime.producers),
+                                studio = anime.studios?.firstOrNull()?.name
                             )
                         )
                     }
@@ -70,9 +74,5 @@ class TopAnimeAdapter(
 
             }
         }
-    }
-
-    fun extractNames(items: List<GenericMalItem>): List<String> {
-        return items.mapNotNull { it.name }
     }
 }

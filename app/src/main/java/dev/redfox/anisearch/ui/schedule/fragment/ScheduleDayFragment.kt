@@ -9,20 +9,22 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import dev.redfox.anisearch.databinding.FragmentScheduleDayBinding
+import dev.redfox.anisearch.ui.animeDetails.AnimeDetailsBottomSheetFragment
 import dev.redfox.anisearch.ui.schedule.adapter.ScheduleAdapter
 import dev.redfox.anisearch.utils.PARAM_ARG_1
+import dev.redfox.anisearch.utils.animeDetailsDialogTag
 import dev.redfox.anisearch.utils.getModelView
 import dev.redfox.anisearch.viewmodel.ScheduleViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class ScheduleDayFragment: Fragment() {
+class ScheduleDayFragment : Fragment() {
     private val binding: FragmentScheduleDayBinding by lazy {
         FragmentScheduleDayBinding.inflate(layoutInflater)
     }
     private lateinit var viewModel: ScheduleViewModel
     private lateinit var mContext: Context
-    private val scheduleAdapter = ScheduleAdapter()
+    private lateinit var scheduleAdapter: ScheduleAdapter
 
     companion object {
         fun newInstance(day: String): ScheduleDayFragment {
@@ -51,7 +53,14 @@ class ScheduleDayFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.handleExtras(arguments)
-
+        scheduleAdapter = ScheduleAdapter { animeChildData, overviewData ->
+            AnimeDetailsBottomSheetFragment.getInstance(
+                animeChildData, overviewData
+            ).show(
+                childFragmentManager,
+                animeDetailsDialogTag
+            )
+        }
         binding.rvSchedule.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(mContext)

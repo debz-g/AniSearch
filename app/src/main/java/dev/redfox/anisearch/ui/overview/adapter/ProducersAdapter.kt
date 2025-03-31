@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import dev.redfox.anisearch.databinding.ItemTagBinding
+import dev.redfox.anisearch.databinding.ItemTagProducersBinding
 import dev.redfox.anisearch.utils.StringListDiffCallback
 
-class TagsAdapter(
+class ProducersAdapter(
     var mContext: Context
 ) : RecyclerView.Adapter<ViewHolder>() {
 
@@ -17,7 +17,7 @@ class TagsAdapter(
         ArrayList()
     }
 
-    private inner class TagsViewHolder(private val binding: ItemTagBinding) :
+    private inner class TagsViewHolder(private val binding: ItemTagProducersBinding) :
         ViewHolder(binding.root) {
         fun bind(position: Int) {
             binding.tvTagItemText.text = tagsList[position]
@@ -26,7 +26,7 @@ class TagsAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return TagsViewHolder(
-            ItemTagBinding.inflate(
+            ItemTagProducersBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

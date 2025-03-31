@@ -27,5 +27,7 @@
     <string name="label_rank">Rank</string>
     <string name="label_favorites">Favorites</string>
     <string name="genres">Genres</string>
+    <string name="studios">Studios</string>
+    <string name="producers">Producers</string>
 
 </resources>

@@ -11,5 +11,7 @@ data class OverviewData(
     val members: Int?,
     val rank: Int?,
     val favourites: Int?,
-    val tags: List<String>?
+    val tags: List<String>?,
+    val producers: List<String>?,
+    val studio: String? = null
 ) : Parcelable

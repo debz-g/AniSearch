@@ -25,4 +25,7 @@ class OverviewViewModel : ViewModel() {
     }
 
     fun getOverviewData() = overviewData
+    fun getTags() = overviewData?.tags
+    fun getProducers() = overviewData?.producers
+    fun getStudio() = overviewData?.studio
 }

@@ -115,6 +115,14 @@ class AnimeDetailsBottomSheetFragment : BottomSheetDialogFragment() {
                     text = animeDetailsVm.getTrimmedAbout(mContext)
                 }
                 tvAnimeDetailsToolbarTitle.text = animeData.title
+                tvAnimeDetailsEnglishName.apply {
+                    show()
+                    text = animeData.englishTitle
+                }
+                tvAnimeDetailsJapaneseName.apply {
+                    show()
+                    text = animeData.japaneseTitle
+                }
             }
         }
     }

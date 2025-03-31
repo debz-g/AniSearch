@@ -104,7 +104,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen6"
-        android:layout_marginTop="@dimen/dimen16"
+        android:layout_marginTop="@dimen/dimen20"
         android:text="@string/genres"
         android:drawablePadding="@dimen/dimen4"
         android:textColor="@color/colorWhite"
@@ -117,9 +117,61 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen0"
         android:layout_marginTop="@dimen/dimen12"
-        tools:listitem="@layout/item_tag"
+        tools:listitem="@layout/item_tag_genres"
+        android:orientation="horizontal"
         tools:itemCount="3"
         android:layout_marginHorizontal="@dimen/dimen8"
         app:layout_constraintTop_toBottomOf="@id/tv_overview_genres" />
+
+    <TextView
+        android:id="@+id/tv_overview_studio"
+        style="@style/PoppinsBold20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen6"
+        android:layout_marginTop="@dimen/dimen20"
+        android:text="@string/studios"
+        android:drawablePadding="@dimen/dimen4"
+        android:textColor="@color/colorWhite"
+        app:drawableStartCompat="@drawable/ic_studios"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rv_overview_genre" />
+
+    <include
+        android:id="@+id/item_tag_producer"
+        layout="@layout/item_tag_studio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_overview_studio"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/dimen16"
+        android:layout_marginStart="@dimen/dimen10"
+        />
+
+    <TextView
+        android:id="@+id/tv_overview_producers"
+        style="@style/PoppinsBold20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen6"
+        android:layout_marginTop="@dimen/dimen20"
+        android:text="@string/producers"
+        android:drawablePadding="@dimen/dimen4"
+        android:visibility="gone"
+        android:textColor="@color/colorWhite"
+        app:drawableStartCompat="@drawable/ic_producers"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_tag_producer" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_overview_producers"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen0"
+        android:layout_marginTop="@dimen/dimen12"
+        tools:listitem="@layout/item_tag_genres"
+        android:orientation="horizontal"
+        tools:itemCount="3"
+        android:layout_marginHorizontal="@dimen/dimen8"
+        app:layout_constraintTop_toBottomOf="@id/tv_overview_producers" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

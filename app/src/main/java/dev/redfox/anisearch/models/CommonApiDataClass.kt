@@ -39,10 +39,8 @@ data class AnimeData(
     val url: String,
     val images: AnimeImages,
     val trailer: Trailer?,
-
     val approved: Boolean,
     val titles: List<AnimeTitle>,
-
     val title: String,
     @SerializedName("title_english")
     val titleEnglish: String?,
@@ -50,17 +48,14 @@ data class AnimeData(
     val titleJapanese: String?,
     @SerializedName("title_synonyms")
     val titleSynonyms: List<String>,
-
     val type: String?,
     val source: String?,
     val episodes: Int?,
     val status: String?,
     val airing: Boolean?,
-
     val aired: Aired,
     val duration: String?,
     val rating: String?,
-
     val score: Double?,
     @SerializedName("scored_by")
     val scoredBy: Int?,
@@ -68,23 +63,17 @@ data class AnimeData(
     val popularity: Int?,
     val members: Int?,
     val favorites: Int?,
-
     val synopsis: String?,
     val background: String?,
-
     val season: String?,
     val year: Int?,
-
     val broadcast: Broadcast?,
-
     val producers: List<GenericMalItem>,
     val licensors: List<GenericMalItem>,
-    val studios: List<GenericMalItem>,
+    val studios: List<GenericMalItem>?,
     val genres: List<GenericMalItem>,
-
     @SerializedName("explicit_genres")
     val explicitGenres: List<GenericMalItem>,
-
     val themes: List<GenericMalItem>,
     val demographics: List<GenericMalItem>
 )

@@ -5,7 +5,6 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
-import android.net.Uri
 import android.os.Build
 import android.os.Build.VERSION.SDK_INT
 import android.os.SystemClock
@@ -21,6 +20,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
 import androidx.core.view.WindowCompat
 import androidx.core.view.marginBottom
 import androidx.core.view.marginLeft
@@ -31,9 +31,9 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
-import dev.redfox.anisearch.R
-import androidx.core.net.toUri
 import com.google.android.material.tabs.TabLayout
+import dev.redfox.anisearch.R
+import dev.redfox.anisearch.models.GenericMalItem
 
 
 fun View.show() {
@@ -70,8 +70,10 @@ fun View.changeBackgroundDrawableColor(color: Int) {
 }
 
 fun Activity.changeSystemBarsIconsAppearance(isLight: Boolean) {
-    WindowCompat.getInsetsController(window, window.decorView).isAppearanceLightStatusBars = !isLight
-    WindowCompat.getInsetsController(window, window.decorView).isAppearanceLightNavigationBars = !isLight
+    WindowCompat.getInsetsController(window, window.decorView).isAppearanceLightStatusBars =
+        !isLight
+    WindowCompat.getInsetsController(window, window.decorView).isAppearanceLightNavigationBars =
+        !isLight
 }
 
 fun Activity.isColorDark(color: Int): Boolean {
@@ -80,7 +82,7 @@ fun Activity.isColorDark(color: Int): Boolean {
     return darkness >= 0.5
 }
 
-fun Activity.updateSystemBarIconsColor(color: Int){
+fun Activity.updateSystemBarIconsColor(color: Int) {
     if (isColorDark(color))
         changeSystemBarsIconsAppearance(isLight = true)
     else
@@ -207,7 +209,7 @@ fun Context.openUrlWithCustomTab(url: String) {
         val customTabsIntent = builder.build()
         customTabsIntent.launchUrl(this, url.toUri())
     } catch (e: Exception) {
-      // No Ops
+        // No Ops
     }
 }
 
@@ -243,4 +245,8 @@ fun TabLayout.setUnSelectView(mContext: Context, position: Int) {
                 setTextColor(mContext.getColorCompat(R.color.colorTransparentWhite50))
             }
     }
+}
+
+fun extractNames(items: List<GenericMalItem>): List<String> {
+    return items.mapNotNull { it.name }
 }
