@@ -5,6 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class OverviewData(
+    val malId: Int,
     val aired: String?,
     val duration: String?,
     val episodes: Int?,

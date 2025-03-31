@@ -29,5 +29,8 @@
     <string name="genres">Genres</string>
     <string name="studios">Studios</string>
     <string name="producers">Producers</string>
+    <string name="retryApiCall">Retry</string>
+    <string name="something_went_wrong">Something went wrong. Please try again.</string>
+    <string name="episode_number">Ep %1$d</string>
 
 </resources>

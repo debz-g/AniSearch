@@ -250,3 +250,17 @@ fun TabLayout.setUnSelectView(mContext: Context, position: Int) {
 fun extractNames(items: List<GenericMalItem>): List<String> {
     return items.mapNotNull { it.name }
 }
+
+fun formatAiredDate(isoDate: String): String {
+    // Parse the ISO date format (2002-02-17T00:00:00+00:00) to a readable format
+    try {
+        val inputFormat = java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX", java.util.Locale.US)
+        val outputFormat = java.text.SimpleDateFormat("MMM dd, yyyy", java.util.Locale.US)
+        val date = inputFormat.parse(isoDate)
+        return date?.let { outputFormat.format(it) } ?: "Unknown"
+    } catch (e: Exception) {
+        return "Unknown"
+    }
+}
+
+fun Context.getDimensionPxSize(dimen: Int) = resources.getDimensionPixelSize(dimen)

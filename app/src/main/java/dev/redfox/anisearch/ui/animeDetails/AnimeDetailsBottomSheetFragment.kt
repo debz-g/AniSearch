@@ -20,6 +20,7 @@ import dev.redfox.anisearch.databinding.DialogAnimeDetailsFragmentBinding
 import dev.redfox.anisearch.databinding.ItemCustomTabBinding
 import dev.redfox.anisearch.models.AnimeChildData
 import dev.redfox.anisearch.models.OverviewData
+import dev.redfox.anisearch.ui.episodes.EpisodesFragment
 import dev.redfox.anisearch.ui.overview.OverviewFragment
 import dev.redfox.anisearch.utils.PARAM_DATA
 import dev.redfox.anisearch.utils.PARAM_DATA_ALT
@@ -171,7 +172,10 @@ class AnimeDetailsBottomSheetFragment : BottomSheetDialogFragment() {
                                 }
 
                                 1 -> {
-
+                                    binding.nsvAnimeDetails.setOnScrollChangeListener(null as NestedScrollView.OnScrollChangeListener?)
+                                    animeDetailsVm.getMalId()?.let { malId ->
+                                        showFragment(EpisodesFragment.getInstance(malId))
+                                    }
                                 }
 
                                 2 -> {

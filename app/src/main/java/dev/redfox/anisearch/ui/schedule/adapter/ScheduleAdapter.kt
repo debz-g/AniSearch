@@ -54,6 +54,7 @@ class ScheduleAdapter(private val onItemClick: (AnimeChildData, OverviewData) ->
                                 genre = extractNames(anime.genres)
                             ),
                             OverviewData(
+                                malId = anime.malId,
                                 aired = anime.aired.string,
                                 duration = anime.duration,
                                 episodes = anime.episodes,

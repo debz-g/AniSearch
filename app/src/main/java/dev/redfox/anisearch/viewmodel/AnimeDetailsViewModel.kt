@@ -47,8 +47,7 @@ class AnimeDetailsViewModel : ViewModel() {
 
     fun getAnimeChildData() = animeChildData
     fun getOverviewData() = overviewData
-
-    fun getGenres() = animeChildData?.genre
+    fun getMalId() = animeChildData?.malId
 
     fun getMalLink() = animeChildData?.linkMAL
     fun getTrailerLink() = animeChildData?.linkTrailer

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="@dimen/dimen8"
+    android:background="@drawable/bg_info_cards"
+    android:padding="@dimen/dimen12">
+
+    <TextView
+        android:id="@+id/tv_episode_number"
+        style="@style/PoppinsRegularWhite14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_border_16dp"
+        android:paddingHorizontal="@dimen/dimen12"
+        android:paddingVertical="@dimen/dimen2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="EP 1" />
+
+    <TextView
+        android:id="@+id/tv_episode_title"
+        style="@style/PoppinsRegularWhite14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:layout_marginHorizontal="@dimen/dimen4"
+        android:layout_marginTop="@dimen/dimen8"
+        android:ellipsize="end"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_episode_number"
+        tools:text="The Journey's End" />
+
+    <ImageView
+        android:id="@+id/iv_calendar"
+        android:layout_width="@dimen/dimen16"
+        android:layout_height="@dimen/dimen16"
+        android:layout_marginStart="@dimen/dimen4"
+        android:layout_marginTop="@dimen/dimen6"
+        android:src="@drawable/ic_calendar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_episode_title"
+        app:tint="@color/colorTransparentWhite50" />
+
+    <TextView
+        android:id="@+id/tv_episode_date"
+        style="@style/PoppinsRegularWhite12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen8"
+        android:textColor="@color/colorTransparentWhite50"
+        app:layout_constraintBottom_toBottomOf="@id/iv_calendar"
+        app:layout_constraintStart_toEndOf="@id/iv_calendar"
+        app:layout_constraintTop_toTopOf="@id/iv_calendar"
+        tools:text="September 29, 2023" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
