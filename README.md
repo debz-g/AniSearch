@@ -38,6 +38,9 @@ AniSearch is a modern anime discovery app that helps you find, track, and enjoy 
 ### Backend
 - Jikan V4 API
 
+## Disclaimer
+AniSearch is a personal, open-source project. It is not associated with the popular websites https://www.anisearch.com or https://www.anisearch.de. This project or I do not have any affiliation with them. Thanks for visiting.
+
 ## Installation
 
 *Coming soon*
